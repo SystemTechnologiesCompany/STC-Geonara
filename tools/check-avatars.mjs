@@ -1,0 +1,31 @@
+import assert from 'node:assert/strict';
+import {readFileSync,existsSync} from 'node:fs';
+import vm from 'node:vm';
+const sandbox=vm.createContext({});
+vm.runInContext(readFileSync(new URL('../avatars.js',import.meta.url),'utf8')+';globalThis.choices=profileAvatarChoices;',sandbox);
+const choices=sandbox.choices;
+assert.equal(choices.length,16,'The picker must include the two new unique designs.');
+assert.equal(new Set(choices.map(choice=>choice.id)).size,choices.length);
+for(const choice of choices){
+ assert.ok(existsSync(new URL('../'+choice.src,import.meta.url)));
+ const svg=readFileSync(new URL('../'+choice.src,import.meta.url),'utf8');
+ assert.match(svg,/<svg[^>]+viewBox=/);
+ assert.match(svg,/viewBox="0 0 61\.7998 61\.7998"/,'Avatars must fill the same circular frame.');
+ const ids=new Set([...svg.matchAll(/\bid="([^"]+)"/g)].map(match=>match[1]));
+ for(const ref of svg.matchAll(/url\(#([^\)]+)\)/g))assert.ok(ids.has(ref[1]),`${choice.id} has a broken SVG reference: ${ref[1]}`);
+ assert.ok(!/<script|<foreignObject|\bon\w+\s*=|(?:href|xlink:href)\s*=/i.test(svg));
+}
+vm.runInContext('Math.random=()=>0',sandbox);
+const first=vm.runInContext("withDefaultAvatar({name:'New profile'})",sandbox);
+assert.equal(first.avatarId,choices[0].id);
+vm.runInContext('Math.random=()=>0.99999',sandbox);
+const last=vm.runInContext("withDefaultAvatar({name:'Another profile'})",sandbox);
+assert.equal(last.avatarId,choices.at(-1).id,'New profiles must use random selection rather than a fixed default.');
+const selected=vm.runInContext(`withDefaultAvatar(${JSON.stringify({...first,photo:'existing-upload'})})`,sandbox);
+assert.equal(selected.avatarId,first.avatarId,'An existing avatar must not reroll on reload.');
+assert.equal(selected.photo,'existing-upload','Default selection must preserve uploaded photos.');
+assert.equal(vm.runInContext(`getProfileAvatar('https://invalid.example/avatar.svg')`,sandbox),null);
+assert.notEqual(vm.runInContext(`randomAvatarId('${choices.at(-1).id}')`,sandbox),choices.at(-1).id,'Surprise me should choose a different avatar.');
+const repaired=vm.runInContext("withDefaultAvatar({avatarId:'unknown',name:'Existing profile'})",sandbox);
+assert.ok(choices.some(choice=>choice.id===repaired.avatarId));
+console.log('Avatar checks passed: 16 unique assets, intact SVG clipping, consistent framing, random defaults, stable choices, and upload preservation.');

@@ -1,0 +1,19 @@
+# Community publishing
+
+Account update: publishing and private account actions now require Google sign-in. Research moderation uses Google admin emails; the old admin-key sign-in is disabled. See [Google-only accounts](GOOGLE_LOGIN.md) for current setup and identity rules.
+
+Community supports text posts, questions, discoveries, up to four JPG/PNG/WebP photographs (10 MiB each), or one MP4/WebM video (25 MiB). The composer previews selected media locally, allows removing attachments, retains a failed draft, and uploads only when Publish is pressed. Text is optional for media posts. Existing discussions and replies remain available as posts and comments.
+
+Comments are stored with the post. Hearts use an idempotent desired-state endpoint; one submitting browser can contribute one heart per post and can unlike it. The active heart is filled rose with a short reduced-motion-aware animation. Display names are editable, while Google verifies account identity. Account IDs establish ownership and likes across devices; session tokens and their hashes never appear in public JSON.
+
+Share invokes the device share menu when supported, otherwise copies a direct `#community?post=UUID` link; if copying is unavailable, a selectable link is shown. The same URL opens the post and its comments. Links use the current host: a public host must run the server endpoints for links to be available to other people. No fake shares or engagement counts are stored.
+
+Media is first staged privately in `.data/community-media/` under generated UUID filenames and associated with the submitting Google account in `.data/community.json`. Only the owner can access an unattached upload. Publishing atomically attaches owned, unused uploads to a post, making them publicly readable. Reusing someone else's upload is rejected. Unused uploads can be removed by their owner, and uploads older than one day are cleaned on subsequent uploads. Eight pending uploads per account and a 1 GiB media-store limit bound storage. Published-post deletion removes its associated media.
+
+The server validates file signatures and returns fixed MIME types; SVG/HTML uploads are rejected. These are format checks, not malware scanning or transcoding. Video codecs must be supported by the viewer's browser. Media responses include nosniff and a sandbox policy. Video GET/HEAD requests support byte ranges, suffix ranges and 416 responses for invalid ranges. Back up both metadata and media together. Failed metadata writes remove the newly staged file.
+
+The feed shows 12 posts at a time, with Load more, text search and question/discovery filters. Polling updates counters and offers a New posts button, preserving comment drafts and video playback instead of replacing the feed. New comments submitted by the viewer refresh the open thread. Photos expand into a viewer. All controls are translated into English, French and Arabic and fit both themes and mobile layouts.
+
+Run `npm start` to enable publishing, comments, likes and media. Direct-file/static-only hosting displays `STC Host error` for unavailable server operations. Relevant endpoints: GET/POST `/api/discussions`; GET/DELETE `/api/discussions/:id`; POST `/api/discussions/:id/replies`; POST `/api/discussions/:id/likes` with `{liked:boolean}`; POST raw binary `/api/community-media?name=...`; GET/HEAD/DELETE `/api/community-media/:id`. Photo/video uploads use binary requests, not base64 in feed JSON.
+
+The preview server accepts optional `STC_DATA_DIR` and `STC_PORT` environment variables for a persistent data location or isolated testing. Defaults remain `.data` and port 5500; the server binds to loopback. Visual checks used a separate temporary data directory and real photo/video uploads, verified native video decoding/playback, comment-draft preservation during likes and language changes, mobile RTL, and both themes. Test posts were not added to the main community store.

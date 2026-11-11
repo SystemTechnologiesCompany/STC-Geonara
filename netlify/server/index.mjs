@@ -1,0 +1,10 @@
+import {readFile} from 'node:fs/promises';
+import {fileURLToPath} from 'node:url';
+const root=fileURLToPath(new URL('../../',import.meta.url));
+const runtime=JSON.parse(await readFile(new URL('../../deployment-runtime.json',import.meta.url),'utf8'));
+process.env.NODE_ENV='production';
+process.env.SITE_URL ||= runtime.siteUrl||process.env.URL;
+process.env.STC_SESSION_STORE='netlify';
+process.env.STC_AUTH_STORE_NAME=runtime.storeName;
+process.env.STC_SITE_ROOT=root;
+await import('../../tools/serve.mjs');

@@ -1,0 +1,24 @@
+{
+  "name": "stc-geonara",
+  "version": "2.0.0",
+  "private": true,
+  "description": "STC Geonara interactive Earth science website",
+  "scripts": {
+    "start": "node tools/serve.mjs",
+    "check": "node --check app.js && node --check data.js && node --check i18n.js && node --check terrain.js && node --check messages.js && node --check avatars.js && node tools/check.mjs && node tools/check-messages.mjs && node tools/check-avatars.mjs && node --check discovery-data.js && node --check discovery-i18n.js && node --check discovery.js && node --check tools/api.mjs && node tools/check-discovery.mjs && node --check reference.js && node --check catalogue-data.js && node --check timescale-data.js && node tools/check-reference.mjs && node --check earth-dictionary-meta.js && node --check earth-dictionary-data.js && node --check earth-dictionary.js && node tools/check-dictionary.mjs && node --check theme-transition.js && node tools/check-theme-transition.mjs && node --check research.js && node --check tools/research-api.mjs && node tools/check-research.mjs && node --check fossils.js && node tools/check-fossils.mjs && node --check community.js && node --check tools/community-api.mjs && node tools/check-community.mjs && node --check google-auth.js && node tools/check-auth.mjs && node --check guest-showcase.js && node tools/build-showcase.mjs --check && npm run check:supabase && node --check swingo.js && node --check tools/swingo.mjs && node tools/check-swingo.mjs && node --check tools/swingo-providers.mjs && node tools/check-swingo-providers.mjs && node tools/check-stc-team.mjs && node tools/check-durable-auth.mjs && node tools/check-deployment.mjs && node --check direct-messages.js && node --check tools/messages-api.mjs && node tools/check-direct-messages.mjs",
+    "check:supabase": "node --check tools/supabase-client.mjs && node --check tools/supabase-auth.mjs && node --check tools/supabase-data.mjs && node tools/check-supabase-schema.mjs && node tools/check-supabase-auth.mjs && node tools/check-supabase-data.mjs && node --check members.js && node --check tools/member-api.mjs && node tools/check-members.mjs",
+    "build:netlify": "node tools/build-netlify.mjs",
+    "prepare:netlify": "node tools/prepare-netlify-env.mjs"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^11.1.9",
+    "@supabase/supabase-js": "^2.119.0",
+    "google-auth-library": "^11.3.4"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.16"
+  }
+}

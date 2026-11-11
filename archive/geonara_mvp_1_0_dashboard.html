@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEONARA — Global Geological Knowledge Platform</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Cairo & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        geoBlue: '#173746',
+                        geoTeal: '#55A99A',
+                        geoSand: '#D6B477',
+                        geoWhite: '#F3F5F4',
+                        geoCharcoal: '#263238',
+                        geoGray: '#77838A',
+                        geoLightGray: '#E5EAE8'
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #F3F5F4;
+            color: #263238;
+        }
+        .tab-active {
+            border-bottom: 3px solid #55A99A;
+            color: #173746;
+            font-weight: 700;
+        }
+        .chat-bubble-user {
+            background-color: #173746;
+            color: #ffffff;
+            border-radius: 18px 18px 0px 18px;
+        }
+        .chat-bubble-ai {
+            background-color: #ffffff;
+            color: #263238;
+            border: 1px solid #E5EAE8;
+            border-radius: 18px 18px 18px 0px;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F3F5F4;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #55A99A;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="h-screen flex flex-col overflow-hidden">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-geoBlue text-white shadow-md z-20 flex-shrink-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Brand Logo & Name -->
+            <div class="flex items-center space-x-3 space-x-reverse cursor-pointer" onclick="switchModule('home')">
+                <div class="w-10 h-10 rounded-lg bg-geoTeal flex items-center justify-center font-bold text-xl text-white shadow-md">
+                    <i class="fa-solid font-bold text-geoWhite">G</i>
+                </div>
+                <div>
+                    <span class="text-xl font-bold tracking-wider font-inter">GEONARA</span>
+                    <span class="block text-xs text-geoSand font-medium">Global Earth Sciences Platform</span>
+                </div>
+            </div>
+
+            <!-- Global Actions & Profile -->
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <button onclick="switchModule('messaging')" class="relative p-2 text-geoWhite hover:text-geoTeal transition" title="الرسائل">
+                    <i class="fa-solid fa-paper-plane text-lg"></i>
+                    <span class="absolute top-1 right-1 w-2.5 h-2.5 bg-geoSand rounded-full"></span>
+                </button>
+                <button class="relative p-2 text-geoWhite hover:text-geoTeal transition" title="الإشعارات" onclick="toggleNotifications()">
+                    <i class="fa-solid fa-bell text-lg"></i>
+                    <span class="absolute top-1 right-1 w-2.5 h-2.5 bg-red-500 rounded-full"></span>
+                </button>
+                
+                <div class="h-6 w-px bg-geoGray opacity-40"></div>
+
+                <!-- User Profile Quick View -->
+                <div class="flex items-center space-x-3 space-x-reverse cursor-pointer" onclick="switchModule('profile')">
+                    <img class="w-9 h-9 rounded-full border-2 border-geoTeal object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250" alt="صورة الملف الشخصي">
+                    <div class="hidden sm:block text-right">
+                        <span class="block text-sm font-semibold leading-tight text-white">د. سارة المنصوري</span>
+                        <span class="block text-xs text-geoSand">أخصائية جيولوجيا رسوبية</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main App Container -->
+    <div class="flex flex-1 overflow-hidden">
+
+        <!-- Sidebar Navigation (Desktop) -->
+        <aside class="hidden md:flex flex-col w-64 bg-white border-l border-geoLightGray shadow-sm z-10 flex-shrink-0">
+            <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
+                <button id="nav-home" onclick="switchModule('home')" class="w-full flex items-center space-x-3 space-x-reverse px-4 py-3 rounded-xl font-semibold text-geoBlue hover:bg-geoWhite transition">
+                    <i class="fa-solid fa-house text-lg w-6 text-center text-geoTeal"></i>
+                    <span>الرئيسية</span>
+                </button>
+                <button id="nav-dictionary" onclick="switchModule('dictionary')" class="w-full flex items-center space-x-3 space-x-reverse px-4 py-3 rounded-xl font-semibold text-geoGray hover:bg-geoWhite hover:text-geoBlue transition">
+                    <i class="fa-solid fa-book-atlas text-lg w-6 text-center text-geoTeal"></i>
+                    <span>القاموس الجيولوجي</span>
+                </button>
+                <button id="nav-research" onclick="switchModule('research')" class="w-full flex items-center space-x-3 space-x-reverse px-4 py-3 rounded-xl font-semibold text-geoGray hover:bg-geoWhite hover:text-geoBlue transition">
+                    <i class="fa-solid fa-microscope text-lg w-6 text-center text-geoTeal"></i>
+                    <span>استكشاف الأبحاث</span>
+                </button>
+                <button id="nav-ai" onclick="switchModule('ai')" class="w-full flex items-center space-x-3 space-x-reverse px-4 py-3 rounded-xl font-semibold text-geoGray hover:bg-geoWhite hover:text-geoBlue transition">
+                    <i class="fa-solid fa-robot text-lg w-6 text-center text-geoTeal"></i>
+                    <span>مساعد الذكاء الاصطناعي</span>
+                </button>
+                <button id="nav-messaging" onclick="switchModule('messaging')" class="w-full flex items-center space-x-3 space-x-reverse px-4 py-3 rounded-xl font-semibold text-geoGray hover:bg-geoWhite hover:text-geoBlue transition">
+                    <i class="fa-solid fa-comments text-lg w-6 text-center text-geoTeal"></i>
+                    <span>الرسائل المباشرة</span>
+                </button>
+                <button id="nav-profile" onclick="switchModule('profile')" class="w-full flex items-center space-x-3 space-x-reverse px-4 py-3 rounded-xl font-semibold text-geoGray hover:bg-geoWhite hover:text-geoBlue transition">
+                    <i class="fa-solid fa-id-card text-lg w-6 text-center text-geoTeal"></i>
+                    <span>الملف الأكاديمي</span>
+                </button>
+            </nav>
+
+            <!-- Bottom Info Badge -->
+            <div class="p-4 border-t border-geoLightGray bg-geoWhite text-xs text-geoGray text-center rounded-b-lg">
+                <span class="block font-bold text-geoBlue">GEONARA MVP v1.0</span>
+                <span class="block mt-1">منصة علوم الأرض الرقمية</span>
+            </div>
+        </aside>
+
+        <!-- Dynamic Content Area -->
+        <main class="flex-1 overflow-y-auto bg-geoWhite p-4 sm:p-6 lg:p-8 relative">
+
+            <!-- MODULE 1: HOME -->
+            <section id="module-home" class="space-y-6">
+                <!-- Welcome Banner -->
+                <div class="bg-gradient-to-r from-geoBlue to-geoCharcoal rounded-2xl p-6 sm:p-8 text-white shadow-lg relative overflow-hidden">
+                    <div class="relative z-10 max-w-2xl">
+                        <span class="bg-geoTeal bg-opacity-30 text-geoTeal text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">مرحباً بك في GEONARA</span>
+                        <h1 class="text-2xl sm:text-3xl font-bold mt-3 mb-2">استكشف وتواصل في عالم علوم الأرض الأكاديمي</h1>
+                        <p class="text-geoWhite text-opacity-80 text-sm leading-relaxed mb-6">المنصة العالمية الموحدة للمصطلحات الجيولوجية، الأبحاث الموثوقة، والذكاء الاصطناعي المدعوم بالمراجع العلمية.</p>
+                        <div class="flex flex-wrap gap-3">
+                            <button onclick="switchModule('ai')" class="bg-geoTeal hover:bg-opacity-90 text-white font-semibold px-5 py-2.5 rounded-xl transition flex items-center space-x-2 space-x-reverse text-sm shadow">
+                                <i class="fa-solid fa-sparkles"></i>
+                                <span>اسأل مساعد الذكاء الاصطناعي</span>
+                            </button>
+                            <button onclick="switchModule('dictionary')" class="bg-white bg-opacity-10 hover:bg-opacity-20 text-white font-semibold px-5 py-2.5 rounded-xl transition text-sm">
+                                <span>تصفح القاموس</span>
+                            </button>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-mountain text-9xl text-white opacity-5 absolute -left-6 -bottom-6"></i>
+                </div>
+
+                <!-- Module Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Dictionary Card -->
+                    <div onclick="switchModule('dictionary')" class="bg-white p-6 rounded-2xl border border-geoLightGray hover:shadow-md transition cursor-pointer group">
+                        <div class="w-12 h-12 rounded-xl bg-geoTeal bg-opacity-10 flex items-center justify-center text-geoTeal text-xl mb-4 group-hover:bg-geoTeal group-hover:text-white transition">
+                            <i class="fa-solid fa-book-atlas"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-geoBlue mb-2">القاموس الجيولوجي</h3>
+                        <p class="text-geoGray text-sm leading-relaxed mb-4">مصطلحات ومفاهيم جيولوجية موثوقة بثلاث لغات (العربية، الإنجليزية، الفرنسية).</p>
+                        <span class="text-geoTeal text-sm font-semibold flex items-center space-x-1 space-x-reverse">
+                            <span>تصفح المصطلحات</span>
+                            <i class="fa-solid fa-arrow-left text-xs transition-transform group-hover:-translate-x-1"></i>
+                        </span>
+                    </div>
+
+                    <!-- Research Card -->
+                    <div onclick="switchModule('research')" class="bg-white p-6 rounded-2xl border border-geoLightGray hover:shadow-md transition cursor-pointer group">
+                        <div class="w-12 h-12 rounded-xl bg-geoTeal bg-opacity-10 flex items-center justify-center text-geoTeal text-xl mb-4 group-hover:bg-geoTeal group-hover:text-white transition">
+                            <i class="fa-solid fa-microscope"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-geoBlue mb-2">مستكشف الأبحاث</h3>
+                        <p class="text-geoGray text-sm leading-relaxed mb-4">ابحث في آلاف الأوراق العلمية والأكاديمية عبر شبكات OpenAlex و Crossref.</p>
+                        <span class="text-geoTeal text-sm font-semibold flex items-center space-x-1 space-x-reverse">
+                            <span>البحث الأكاديمي</span>
+                            <i class="fa-solid fa-arrow-left text-xs transition-transform group-hover:-translate-x-1"></i>
+                        </span>
+                    </div>
+
+                    <!-- AI Assistant Card -->
+                    <div onclick="switchModule('ai')" class="bg-white p-6 rounded-2xl border border-geoLightGray hover:shadow-md transition cursor-pointer group">
+                        <div class="w-12 h-12 rounded-xl bg-geoTeal bg-opacity-10 flex items-center justify-center text-geoTeal text-xl mb-4 group-hover:bg-geoTeal group-hover:text-white transition">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-geoBlue mb-2">GEONARA AI</h3>
+                        <p class="text-geoGray text-sm leading-relaxed mb-4">مساعد متقن يجيب على تساؤلاتك الجيولوجية بإسناد ومراجع موثوقة (RAG).</p>
+                        <span class="text-geoTeal text-sm font-semibold flex items-center space-x-1 space-x-reverse">
+                            <span>بدء محادثة جديدة</span>
+                            <i class="fa-solid fa-arrow-left text-xs transition-transform group-hover:-translate-x-1"></i>
+                        </span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MODULE 2: DICTIONARY -->
+            <section id="module-dictionary" class="hidden space-y-6">
+                <!-- Header & Search -->
+                <div class="bg-white p-6 rounded-2xl border border-geoLightGray shadow-sm space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div>
+                            <h2 class="text-xl font-bold text-geoBlue">القاموس الجيولوجي المتخصص</h2>
+                            <p class="text-geoGray text-xs mt-1">تصفح المصطلحات العلمية والتعاريف والترجمات المعتمدة</p>
+                        </div>
+                        <!-- Language Filter -->
+                        <div class="flex items-center space-x-2 space-x-reverse text-xs">
+                            <span class="text-geoGray">اللغة المعروضة:</span>
+                            <button class="px-3 py-1.5 rounded-lg bg-geoBlue text-white font-medium">العربية</button>
+                            <button class="px-3 py-1.5 rounded-lg bg-geoWhite text-geoCharcoal hover:bg-geoLightGray font-medium">English</button>
+                            <button class="px-3 py-1.5 rounded-lg bg-geoWhite text-geoCharcoal hover:bg-geoLightGray font-medium">Français</button>
+                        </div>
+                    </div>
+
+                    <!-- Search Input Box -->
+                    <div class="relative">
+                        <i class="fa-solid fa-magnifying-glass absolute right-4 top-3.5 text-geoGray"></i>
+                        <input type="text" id="dict-search" placeholder="ابحث عن مصطلح (مثلاً: حوض رسوبي، Lithification، التكتونية)..." class="w-full pl-4 pr-11 py-3 bg-geoWhite border border-geoLightGray rounded-xl text-sm focus:outline-none focus:border-geoTeal transition">
+                    </div>
+
+                    <!-- Category Chips -->
+                    <div class="flex items-center space-x-2 space-x-reverse overflow-x-auto pb-2 text-xs">
+                        <button class="px-3 py-1.5 rounded-full bg-geoTeal text-white font-semibold whitespace-nowrap">الكل</button>
+                        <button class="px-3 py-1.5 rounded-full bg-geoWhite text-geoCharcoal border border-geoLightGray hover:bg-geoLightGray whitespace-nowrap">علم الرسوبيات (Sedimentology)</button>
+                        <button class="px-3 py-1.5 rounded-full bg-geoWhite text-geoCharcoal border border-geoLightGray hover:bg-geoLightGray whitespace-nowrap">الطبقات (Stratigraphy)</button>
+                        <button class="px-3 py-1.5 rounded-full bg-geoWhite text-geoCharcoal border border-geoLightGray hover:bg-geoLightGray whitespace-nowrap">الجيولوجيا التركيبية (Structural)</button>
+                        <button class="px-3 py-1.5 rounded-full bg-geoWhite text-geoCharcoal border border-geoLightGray hover:bg-geoLightGray whitespace-nowrap">علم المعادن (Mineralogy)</button>
+                    </div>
+                </div>
+
+                <!-- Term Detail Display Card -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-geoLightGray shadow-sm space-y-6">
+                    <div class="flex items-start justify-between border-b border-geoLightGray pb-4">
+                        <div>
+                            <span class="inline-block px-3 py-1 bg-geoTeal bg-opacity-10 text-geoTeal rounded-md text-xs font-bold mb-2">علم الرسوبيات والطبقات</span>
+                            <h3 class="text-2xl font-bold text-geoBlue">حوض رسوبي <span class="text-base font-normal text-geoGray font-inter">(Sedimentary Basin)</span></h3>
+                        </div>
+                        <button class="text-geoGray hover:text-geoTeal p-2" title="حفظ المصطلح">
+                            <i class="fa-regular fa-bookmark text-xl"></i>
+                        </button>
+                    </div>
+
+                    <!-- Multilingual Translations -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-geoWhite p-4 rounded-xl text-sm">
+                        <div>
+                            <span class="block text-xs text-geoGray mb-1">الفرنسية (French)</span>
+                            <span class="font-semibold text-geoCharcoal font-inter">Bassin sédimentaire</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-geoGray mb-1">الإنجليزية (English)</span>
+                            <span class="font-semibold text-geoCharcoal font-inter">Sedimentary Basin</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-geoGray mb-1">رمز المصطلح القياسي</span>
+                            <span class="font-semibold text-geoCharcoal font-inter">GEO-SED-042</span>
+                        </div>
+                    </div>
+
+                    <!-- Scientific Definition -->
+                    <div class="space-y-2">
+                        <h4 class="font-bold text-geoBlue text-base">التعريف العلمي:</h4>
+                        <p class="text-geoCharcoal text-sm leading-relaxed">
+                            انخفاض أو منخفض جيولوجي تكتوني أو بنائي في القشرة الأرضية، يتجمع فيه كميات ضخمة من الرسوبيات وتترسب عبر الأزمنة الجيولوجية المتعاقبة. تُعد الأحواض الرسوبية البيئة الرئيسية لتشكل الصخور الرسوبية والمكامن الهيدروكربونية والمياه الجوفية.
+                        </p>
+                    </div>
+
+                    <!-- Related Terms -->
+                    <div class="space-y-2">
+                        <h4 class="font-bold text-geoBlue text-sm">المصطلحات ذات الصلة:</h4>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <a href="#" class="px-3 py-1 bg-geoWhite hover:bg-geoLightGray text-geoBlue rounded-lg border border-geoLightGray">الترسيب (Sedimentation)</a>
+                            <a href="#" class="px-3 py-1 bg-geoWhite hover:bg-geoLightGray text-geoBlue rounded-lg border border-geoLightGray">الهبوط التكتوني (Subsidence)</a>
+                            <a href="#" class="px-3 py-1 bg-geoWhite hover:bg-geoLightGray text-geoBlue rounded-lg border border-geoLightGray">علم الطبقات (Stratigraphy)</a>
+                        </div>
+                    </div>
+
+                    <!-- Scientific References -->
+                    <div class="border-t border-geoLightGray pt-4 text-xs text-geoGray">
+                        <span class="font-bold block mb-1">المراجع العلمية المعتمدة:</span>
+                        <p>Allen, P. A., & Allen, J. R. (2013). Basin Analysis: Principles and Application to Petroleum Systems. John Wiley & Sons.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MODULE 3: RESEARCH -->
+            <section id="module-research" class="hidden space-y-6">
+                <!-- Research Search Bar -->
+                <div class="bg-white p-6 rounded-2xl border border-geoLightGray shadow-sm space-y-4">
+                    <div>
+                        <h2 class="text-xl font-bold text-geoBlue">استكشاف الأبحاث والأوراق العلمية</h2>
+                        <p class="text-geoGray text-xs mt-1">ابحث في المستودعات العالمية المفتوحة (OpenAlex, Crossref, USGS)</p>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <div class="relative flex-1">
+                            <i class="fa-solid fa-magnifying-glass absolute right-4 top-3.5 text-geoGray"></i>
+                            <input type="text" placeholder="عنوان البحث، اسم الباحث، الكلمات المفتاحية أو رقم DOI..." class="w-full pl-4 pr-11 py-3 bg-geoWhite border border-geoLightGray rounded-xl text-sm focus:outline-none focus:border-geoTeal">
+                        </div>
+                        <button class="bg-geoTeal hover:bg-opacity-90 text-white font-semibold px-6 py-3 rounded-xl transition text-sm flex items-center justify-center space-x-2 space-x-reverse">
+                            <i class="fa-solid fa-filter"></i>
+                            <span>بحث وتصفية</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Search Results List -->
+                <div class="space-y-4">
+                    <!-- Paper Item 1 -->
+                    <div class="bg-white p-6 rounded-2xl border border-geoLightGray shadow-sm hover:border-geoTeal transition space-y-3">
+                        <div class="flex items-start justify-between gap-4">
+                            <span class="px-2.5 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-md flex items-center space-x-1 space-x-reverse">
+                                <i class="fa-solid fa-lock-open text-xs"></i>
+                                <span>وصول حر (Open Access)</span>
+                            </span>
+                            <span class="text-xs text-geoGray font-inter">سنة النشر: 2023</span>
+                        </div>
+
+                        <h3 class="text-lg font-bold text-geoBlue hover:text-geoTeal transition cursor-pointer">Tectonic Evolution and Basin Analysis of the Saharan Platform During the Mesozoic Era</h3>
+                        
+                        <p class="text-xs font-semibold text-geoCharcoal">المؤلفون: <span class="font-normal text-geoGray">د. أحمد بن علي، د. جان كلود، د. سارة المنصوري</span></p>
+
+                        <p class="text-geoGray text-sm text-justify leading-relaxed line-clamp-2">
+                            تتناول هذه الدراسة التطور التكتوني والتحليل البنائي للأحواض الرسوبية في منصة الصحراء الكبرى خلال الحقبة الوسطى، مع التركيز على توزيع المكامن الرسوبية ونظم البترول والمياه الجوفية...
+                        </p>
+
+                        <div class="flex flex-wrap items-center justify-between gap-4 border-t border-geoLightGray pt-3 text-xs">
+                            <span class="text-geoGray font-inter">المجلة: Journal of African Earth Sciences</span>
+                            <div class="flex items-center space-x-3 space-x-reverse">
+                                <a href="https://doi.org/10.1016/j.jafrearsci" target="_blank" class="text-geoTeal hover:underline font-inter font-medium">DOI: 10.1016/j.jafrearsci.2023.104921</a>
+                                <button class="bg-geoWhite hover:bg-geoLightGray text-geoBlue px-3 py-1.5 rounded-lg border border-geoLightGray font-medium transition">عرض التفاصيل</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Paper Item 2 -->
+                    <div class="bg-white p-6 rounded-2xl border border-geoLightGray shadow-sm hover:border-geoTeal transition space-y-3">
+                        <div class="flex items-start justify-between gap-4">
+                            <span class="px-2.5 py-1 bg-gray-100 text-geoCharcoal text-xs font-bold rounded-md">بيانات وصفية (Metadata)</span>
+                            <span class="text-xs text-geoGray font-inter">سنة النشر: 2021</span>
+                        </div>
+
+                        <h3 class="text-lg font-bold text-geoBlue hover:text-geoTeal transition cursor-pointer">Diagenetic Alterations in Carbonate Reservoirs: Implications for Porosity Evolution</h3>
+                        
+                        <p class="text-xs font-semibold text-geoCharcoal">المؤلفون: <span class="font-normal text-geoGray">Dr. Robert Miller, Dr. Elena Rostova</span></p>
+
+                        <p class="text-geoGray text-sm text-justify leading-relaxed line-clamp-2">
+                            دراسة تفصيلية لعمليات النشأة اللاحقة (Diagenesis) في المكامن الكربوناتية وتأثيرها المباشر على المسامية والنفاذية الجوفية...
+                        </p>
+
+                        <div class="flex flex-wrap items-center justify-between gap-4 border-t border-geoLightGray pt-3 text-xs">
+                            <span class="text-geoGray font-inter">المصدر: Geological Society, London, Special Publications</span>
+                            <a href="#" class="text-geoTeal hover:underline font-inter font-medium">المصدر الأصلي <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MODULE 4: GEONARA AI -->
+            <section id="module-ai" class="hidden h-full flex flex-col space-y-4">
+                <!-- AI Banner Header -->
+                <div class="bg-white p-4 rounded-2xl border border-geoLightGray shadow-sm flex items-center justify-between flex-shrink-0">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="w-10 h-10 rounded-xl bg-geoTeal flex items-center justify-center text-white font-bold">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-base font-bold text-geoBlue">GEONARA AI Assistant</h2>
+                            <span class="text-xs text-geoTeal font-medium">مساعد مخصص لعلوم الأرض مع الاستناد للمراجع العلمية (RAG)</span>
+                        </div>
+                    </div>
+                    <button class="text-xs bg-geoWhite hover:bg-geoLightGray text-geoBlue px-3 py-2 rounded-xl border border-geoLightGray transition font-semibold">
+                        <i class="fa-solid fa-plus ml-1"></i> محادثة جديدة
+                    </button>
+                </div>
+
+                <!-- Chat Scroll Container -->
+                <div class="flex-1 overflow-y-auto bg-white rounded-2xl border border-geoLightGray p-4 sm:p-6 space-y-6">
+                    
+                    <!-- AI Welcome Bubble -->
+                    <div class="flex items-start space-x-3 space-x-reverse">
+                        <div class="w-8 h-8 rounded-full bg-geoTeal flex items-center justify-center text-white text-xs font-bold flex-shrink-0">AI</div>
+                        <div class="chat-bubble-ai p-4 max-w-2xl text-sm leading-relaxed space-y-2">
+                            <p class="font-bold text-geoBlue">أهلاً بك د. سارة!</p>
+                            <p>أنا مساعدك الذكي المتخصص في علوم الأرض والجيولوجيا. كيف يمكنني مساعدتك اليوم في أبحاثك أو استفساراتك العلمية؟</p>
+                        </div>
+                    </div>
+
+                    <!-- User Message Bubble -->
+                    <div class="flex items-start justify-end space-x-3 space-x-reverse">
+                        <div class="chat-bubble-user p-4 max-w-xl text-sm leading-relaxed">
+                            ما الفرق الرئيسي بين الأحواض التكتونية والرسوبية، وما هي أبرز المراجع الأكاديمية التي ناقشت هذا التمايز؟
+                        </div>
+                        <img class="w-8 h-8 rounded-full object-cover border border-geoTeal flex-shrink-0" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250" alt="User Avatar">
+                    </div>
+
+                    <!-- AI Response Bubble with Evidence RAG -->
+                    <div class="flex items-start space-x-3 space-x-reverse">
+                        <div class="w-8 h-8 rounded-full bg-geoTeal flex items-center justify-center text-white text-xs font-bold flex-shrink-0">AI</div>
+                        <div class="chat-bubble-ai p-5 max-w-2xl text-sm leading-relaxed space-y-4 shadow-sm">
+                            <p class="font-semibold text-geoBlue">بناءً على الأدبيات والمراجع الجيولوجية المتاحة:</p>
+                            
+                            <div class="space-y-2">
+                                <p><strong class="text-geoTeal">1. الأحواض الرسوبية (Sedimentary Basins):</strong> تُعرف بأنها مناطق انخفاض في القشرة الأرضية تتراكم فيها الرسوبيات عبر فترات زمنية طويلة، وتتشكل بنشاط تكتوني أو هبوط حراري (Thermal Subsidence).</p>
+                                <p><strong class="text-geoTeal">2. الأحواض التكتونية (Tectonic Basins):</strong> ترتبط بشكل مباشر وجوهري بالقوى التكتونية المسببة للاقتطاع والتشوه (مثل أودية الانخساف Rift Valleys وأحواض Strike-Slip).</p>
+                            </div>
+
+                            <!-- Citations Block -->
+                            <div class="bg-geoWhite p-3 rounded-xl border border-geoLightGray space-y-1 text-xs">
+                                <span class="font-bold text-geoBlue block">المراجع المستند عليها في الإجابة:</span>
+                                <ul class="list-disc list-inside text-geoGray space-y-0.5">
+                                    <li>Miall, A. D. (2019). <em>The Geology of Stratigraphic Sequences</em>. Springer.</li>
+                                    <li>Ingersoll, R. V. (2012). <em>Tectonics of Sedimentary Basins</em>. Blackwell Publishing.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Input Box Container -->
+                <div class="bg-white p-3 rounded-2xl border border-geoLightGray flex items-center space-x-2 space-x-reverse flex-shrink-0">
+                    <input type="text" placeholder="اكتب سؤالك العلمي هنا..." class="flex-1 bg-geoWhite text-sm px-4 py-3 rounded-xl focus:outline-none focus:border-geoTeal">
+                    <button class="bg-geoTeal hover:bg-opacity-90 text-white font-semibold px-5 py-3 rounded-xl transition flex items-center justify-center space-x-2 space-x-reverse text-sm">
+                        <span>إرسال</span>
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- MODULE 5: DIRECT MESSAGING -->
+            <section id="module-messaging" class="hidden h-full bg-white rounded-2xl border border-geoLightGray flex overflow-hidden">
+                <!-- Conversations Sidebar -->
+                <div class="w-full sm:w-80 border-l border-geoLightGray flex flex-col flex-shrink-0">
+                    <div class="p-4 border-b border-geoLightGray">
+                        <h3 class="font-bold text-geoBlue text-base">الرسائل المباشرة</h3>
+                        <p class="text-geoGray text-xs">التواصل الأكاديمي والمهني الخاص</p>
+                    </div>
+                    <div class="flex-1 overflow-y-auto divide-y divide-geoLightGray">
+                        <!-- User Chat 1 -->
+                        <div class="p-4 hover:bg-geoWhite cursor-pointer bg-geoWhite border-r-4 border-geoTeal flex items-center space-x-3 space-x-reverse">
+                            <img class="w-10 h-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=250" alt="Avatar">
+                            <div class="flex-1 overflow-hidden">
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="font-bold text-sm text-geoBlue truncate">د. طارق العلمي</span>
+                                    <span class="text-xs text-geoGray">10:45 ص</span>
+                                </div>
+                                <p class="text-xs text-geoGray truncate">هل قمت بمراجعة الورقة الأكاديمية الجديدة؟</p>
+                            </div>
+                        </div>
+                        <!-- User Chat 2 -->
+                        <div class="p-4 hover:bg-geoWhite cursor-pointer flex items-center space-x-3 space-x-reverse">
+                            <img class="w-10 h-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=250" alt="Avatar">
+                            <div class="flex-1 overflow-hidden">
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="font-bold text-sm text-geoBlue truncate">م. يوسف القاسمي</span>
+                                    <span class="text-xs text-geoGray">أمس</span>
+                                </div>
+                                <p class="text-xs text-geoGray truncate">شكراً جزيلاً على التوضيح الخاص بالمعادن.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Active View -->
+                <div class="hidden sm:flex flex-1 flex-col bg-geoWhite">
+                    <!-- Chat Header -->
+                    <div class="p-4 bg-white border-b border-geoLightGray flex items-center justify-between">
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <img class="w-10 h-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=250" alt="Avatar">
+                            <div>
+                                <h4 class="font-bold text-geoBlue text-sm">د. طارق العلمي</h4>
+                                <span class="text-xs text-geoTeal">أستاذ الجيولوجيا التركيبية</span>
+                            </div>
+                        </div>
+                        <button class="text-geoGray hover:text-geoBlue text-sm">
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </button>
+                    </div>
+
+                    <!-- Messages Content -->
+                    <div class="flex-1 p-4 overflow-y-auto space-y-4">
+                        <div class="flex justify-start">
+                            <div class="bg-white p-3 rounded-xl border border-geoLightGray text-sm max-w-md">
+                                مرحباً دكتورة سارة، هل قمت بمراجعة بيانات حوض الصحراء؟
+                            </div>
+                        </div>
+                        <div class="flex justify-end">
+                            <div class="bg-geoBlue text-white p-3 rounded-xl text-sm max-w-md">
+                                أهلاً د. طارق، نعم قمت بتحليل البيانات الوصفية ونتائج المسح الجيوفيزيائي وسأرسل لك التقرير قريباً.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Message Input -->
+                    <div class="p-3 bg-white border-t border-geoLightGray flex items-center space-x-2 space-x-reverse">
+                        <input type="text" placeholder="اكتب رسالتك المباشرة..." class="flex-1 bg-geoWhite text-sm px-4 py-2.5 rounded-xl focus:outline-none">
+                        <button class="bg-geoTeal text-white px-4 py-2.5 rounded-xl text-sm font-semibold">إرسال</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MODULE 6: USER PROFILE -->
+            <section id="module-profile" class="hidden space-y-6">
+                <!-- Profile Header Card -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-geoLightGray shadow-sm space-y-6">
+                    <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6 sm:space-x-reverse">
+                        <img class="w-24 h-24 rounded-full border-4 border-geoTeal object-cover shadow" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250" alt="Profile Picture">
+                        
+                        <div class="flex-1 text-center sm:text-right space-y-2">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                <h2 class="text-2xl font-bold text-geoBlue">د. سارة المنصوري</h2>
+                                <button class="bg-geoWhite hover:bg-geoLightGray text-geoBlue border border-geoLightGray font-semibold px-4 py-2 rounded-xl text-xs transition">تعديل الملف الشخصي</button>
+                            </div>
+                            <p class="text-geoTeal font-semibold text-sm">أخصائية جيولوجيا رسوبية وتحليل الأحواض</p>
+                            <p class="text-geoGray text-xs font-inter"><i class="fa-solid fa-building-columns ml-1"></i> أستاذة مشاركة — جامعة الجزائر / مركز البحوث الجيولوجية</p>
+                            <p class="text-geoGray text-xs font-inter"><i class="fa-solid fa-location-dot ml-1"></i> الجزائر (DZ)</p>
+                        </div>
+                    </div>
+
+                    <!-- Academic Interests & Skills -->
+                    <div class="border-t border-geoLightGray pt-6 grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                        <div>
+                            <h4 class="font-bold text-geoBlue mb-3">الاهتمامات البحثية (Research Interests)</h4>
+                            <div class="flex flex-wrap gap-2 text-xs">
+                                <span class="px-3 py-1.5 bg-geoWhite text-geoCharcoal rounded-lg border border-geoLightGray font-medium">النشأة اللاحقة (Diagenetic Processes)</span>
+                                <span class="px-3 py-1.5 bg-geoWhite text-geoCharcoal rounded-lg border border-geoLightGray font-medium">تحليل الأحواض الرسوبية</span>
+                                <span class="px-3 py-1.5 bg-geoWhite text-geoCharcoal rounded-lg border border-geoLightGray font-medium">نظم الميكروبات القديمة</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-geoBlue mb-3">المهارات والتخصصات العلمية</h4>
+                            <div class="flex flex-wrap gap-2 text-xs">
+                                <span class="px-3 py-1.5 bg-geoTeal bg-opacity-10 text-geoTeal rounded-lg font-bold">Sedimentology</span>
+                                <span class="px-3 py-1.5 bg-geoTeal bg-opacity-10 text-geoTeal rounded-lg font-bold">Petroleum Geology</span>
+                                <span class="px-3 py-1.5 bg-geoTeal bg-opacity-10 text-geoTeal rounded-lg font-bold">Stratigraphy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Mobile Navigation Bottom Bar -->
+    <div class="md:hidden bg-white border-t border-geoLightGray flex items-center justify-around p-2 flex-shrink-0 z-20">
+        <button onclick="switchModule('home')" class="flex flex-col items-center text-geoTeal">
+            <i class="fa-solid fa-house text-lg"></i>
+            <span class="text-[10px] font-bold">الرئيسية</span>
+        </button>
+        <button onclick="switchModule('dictionary')" class="flex flex-col items-center text-geoGray">
+            <i class="fa-solid fa-book-atlas text-lg"></i>
+            <span class="text-[10px]">القاموس</span>
+        </button>
+        <button onclick="switchModule('research')" class="flex flex-col items-center text-geoGray">
+            <i class="fa-solid fa-microscope text-lg"></i>
+            <span class="text-[10px]">الأبحاث</span>
+        </button>
+        <button onclick="switchModule('ai')" class="flex flex-col items-center text-geoGray">
+            <i class="fa-solid fa-robot text-lg"></i>
+            <span class="text-[10px]">الذكاء الاصطناعي</span>
+        </button>
+        <button onclick="switchModule('profile')" class="flex flex-col items-center text-geoGray">
+            <i class="fa-solid fa-id-card text-lg"></i>
+            <span class="text-[10px]">الملف</span>
+        </button>
+    </div>
+
+    <!-- Client Interactive Script -->
+    <script>
+        function switchModule(moduleName) {
+            // Hide all modules
+            const modules = ['home', 'dictionary', 'research', 'ai', 'messaging', 'profile'];
+            modules.forEach(mod => {
+                const el = document.getElementById(`module-${mod}`);
+                if (el) el.classList.add('hidden');
+                
+                const navBtn = document.getElementById(`nav-${mod}`);
+                if (navBtn) {
+                    navBtn.classList.remove('bg-geoWhite', 'text-geoBlue', 'font-bold');
+                    navBtn.classList.add('text-geoGray');
+                }
+            });
+
+            // Show selected module
+            const targetModule = document.getElementById(`module-${moduleName}`);
+            if (targetModule) {
+                targetModule.classList.remove('hidden');
+            }
+
+            // Highlight sidebar nav
+            const activeNav = document.getElementById(`nav-${moduleName}`);
+            if (activeNav) {
+                activeNav.classList.add('bg-geoWhite', 'text-geoBlue', 'font-bold');
+                activeNav.classList.remove('text-geoGray');
+            }
+        }
+
+        function toggleNotifications() {
+            alert('الإشعارات: لديك 2 رسالة جديدة و1 تحديث على القاموس الجيولوجي.');
+        }
+    </script>
+</body>
+</html>

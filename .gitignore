@@ -1,0 +1,11 @@
+.data/
+.cache/
+.env
+.env.*
+!.env.example
+
+node_modules/
+
+.netlify/
+.netlify-publish/
+deployment-runtime.json

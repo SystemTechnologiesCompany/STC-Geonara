@@ -1,0 +1,3 @@
+'use strict';
+const researchTopics=Object.freeze(['Agriculture and Forestry','Atmospheric Science','Climate Science','Cryosphere','Earth Sciences','Ecology','Energy Resources','Environmental Chemistry','Environmental Science','Geochemistry','Geology','Geomorphology','Geophysics','Hydrology','Mineralogy','Natural Hazards','Natural Resources','Oceanography','Palaeontology','Petroleum Geology','Petrology','Planetary Science','Remote Sensing and GIS','Sedimentology','Soil Science','Space and Solar Physics','Stratigraphy','Structural Geology']);
+if(typeof module!=='undefined'&&module.exports)module.exports=researchTopics;

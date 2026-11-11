@@ -1,0 +1,62 @@
+/* Reference-inspired cartography, kept away from reading and input surfaces. */
+:root{--map-ink:#656840;--map-strength:.28}
+:root[data-theme=dark]{--map-ink:#c7a45b;--map-strength:.26}
+.hero::before{content:'';position:absolute;inset:0 0 0 35%;z-index:-1;pointer-events:none;background:linear-gradient(90deg,transparent,#c7a45b 35%);mask:var(--pattern-contour-field) center/950px 600px no-repeat;-webkit-mask:var(--pattern-contour-field) center/950px 600px no-repeat;opacity:.22}
+.geo-page>.intro{position:relative;isolation:isolate;overflow:hidden;padding:28px 32px;border:1px solid var(--line);border-radius:23px;background:linear-gradient(110deg,var(--paper),var(--palette-wash));min-height:150px}
+.geo-page>.intro::before{content:'';position:absolute;inset:0 0 0 35%;z-index:-1;pointer-events:none;background:linear-gradient(90deg,transparent,var(--map-ink) 50%);mask:var(--pattern-contour-field) center/620px 388px no-repeat;-webkit-mask:var(--pattern-contour-field) center/620px 388px no-repeat;opacity:var(--map-strength)}
+.geo-page>.intro h1{max-width:24ch}
+.geo-page>.intro p{max-width:45ch}
+.notebook-page>.intro::before{inset:0;background:url('assets/patterns/field-map-1946.jpg') right 47%/580px auto no-repeat;mask:linear-gradient(90deg,transparent 32%,#000 90%);-webkit-mask:linear-gradient(90deg,transparent 32%,#000 90%);filter:grayscale(1) sepia(.55) contrast(1.5);opacity:.3}
+html[data-theme=dark] .notebook-page>.intro::before{filter:grayscale(1) invert(1) sepia(1) saturate(.7) contrast(1.15);opacity:.22}
+.feature-link{isolation:isolate}
+.feature-link[href='#notebook']::before,.feature-link[href='#atlas']::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(135deg,transparent 30%,var(--map-ink));mask:var(--pattern-contour-field) 75% center/520px 325px no-repeat;-webkit-mask:var(--pattern-contour-field) 75% center/520px 325px no-repeat;opacity:.18}
+.feature-link[href='#atlas']::before{mask:var(--pattern-basement) center/40px 40px repeat;-webkit-mask:var(--pattern-basement) center/40px 40px repeat;opacity:.12}
+.discovery .strata::before{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:#3a4222;mask:var(--rock-pattern) center/var(--rock-pattern-size) repeat;-webkit-mask:var(--rock-pattern) center/var(--rock-pattern-size) repeat;opacity:.48}
+.discovery .strata:nth-child(1){--rock-pattern:var(--pattern-sandstone);--rock-pattern-size:48px 48px}
+.discovery .strata:nth-child(2){--rock-pattern:var(--pattern-shale);--rock-pattern-size:56px 40px}
+.discovery .strata:nth-child(3){--rock-pattern:var(--pattern-limestone);--rock-pattern-size:64px 40px}
+.discovery .strata:nth-child(4){--rock-pattern:var(--pattern-basement);--rock-pattern-size:40px 40px}
+html[data-theme=dark] .discovery .strata::before{background:#f0e4c6;opacity:.4}
+html[dir=rtl] .geo-page>.intro::before{transform:scaleX(-1)}
+@media(max-width:760px){
+ .hero::before{inset:240px -20% 0 0;mask-size:700px 438px;-webkit-mask-size:700px 438px;opacity:.18}
+ .geo-page>.intro{padding:25px 22px;min-height:140px}
+ .geo-page>.intro::before{inset:0;opacity:.15;background:linear-gradient(90deg,transparent 25%,var(--map-ink));mask-position:right center;-webkit-mask-position:right center}
+ .notebook-page>.intro::before{background:url('assets/patterns/field-map-1946.jpg') right center/400px auto no-repeat;opacity:.21}
+}
+@media(prefers-contrast:more){:root{--map-strength:.16}.hero::before{opacity:.15}}
+@media(forced-colors:active){.hero::before,.geo-page>.intro::before,.feature-link::before,.discovery .strata::before{display:none}}
+
+/* Distinct geological motifs for distinct areas, without adding more to the hero. */
+.dictionary-page>.intro,.research-page>.intro{position:relative;isolation:isolate;overflow:hidden;min-height:160px;padding:28px 32px;border:1px solid var(--line);border-radius:23px;background:linear-gradient(110deg,var(--paper),var(--palette-wash))}
+.dictionary-page>.intro::before,.research-page>.intro::before{content:'';position:absolute;inset:0 0 0 44%;z-index:-1;pointer-events:none;background:linear-gradient(90deg,transparent,var(--map-ink) 55%);opacity:.4;mask:var(--section-pattern) right center/contain no-repeat;-webkit-mask:var(--section-pattern) right center/contain no-repeat}
+.dictionary-page>.intro{--section-pattern:var(--pattern-mineral-facets)}
+.research-page>.intro{--section-pattern:var(--pattern-folded-beds)}
+.dictionary-page>.intro h1,.research-page>.intro h1{max-width:24ch}
+.dictionary-page>.intro>.badge,.research-page>.intro>.badge{position:relative;background:var(--paper)}
+.community-page>.intro::before{inset:0 0 0 32%;mask:var(--pattern-connection-tree) center/contain no-repeat;-webkit-mask:var(--pattern-connection-tree) center/contain no-repeat;background:linear-gradient(90deg,transparent,var(--map-ink) 25%);opacity:.65}
+html[data-theme=dark] .community-page>.intro::before{opacity:.72}
+.feature-link[href='#notebook']::before{mask:var(--pattern-field-compass) right -30px center/240px 240px no-repeat;-webkit-mask:var(--pattern-field-compass) right -30px center/240px 240px no-repeat;opacity:.21}
+.feature-link[href='#timeline']::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(135deg,transparent 30%,var(--map-ink));mask:var(--pattern-folded-beds) right bottom/380px auto no-repeat;-webkit-mask:var(--pattern-folded-beds) right bottom/380px auto no-repeat;opacity:.18}
+html[dir=rtl] .dictionary-page>.intro::before,html[dir=rtl] .research-page>.intro::before{transform:scaleX(-1)}
+@media(max-width:760px){.dictionary-page>.intro,.research-page>.intro{min-height:160px;padding:24px 22px}.dictionary-page>.intro::before,.research-page>.intro::before{inset:0 0 0 30%;opacity:.22}.community-page>.intro::before{opacity:.22}}
+@media(forced-colors:active){.dictionary-page>.intro::before,.research-page>.intro::before{display:none}}
+
+.terrain-reading-guide{margin:25px 0 30px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(135deg,var(--paper),var(--palette-wash));overflow:hidden;box-shadow:inset 0 1px 0 #ffffff18,0 12px 32px #00000008}
+.terrain-reading-guide>summary{display:flex;align-items:center;justify-content:space-between;gap:20px;list-style:none;cursor:pointer;padding:21px 26px;font-size:15px;font-weight:600;color:var(--ink)}
+.terrain-reading-guide>summary::-webkit-details-marker{display:none}
+.terrain-guide-chevron{width:8px;height:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);flex-shrink:0;margin-inline-end:4px}
+.terrain-reading-guide[open] .terrain-guide-chevron{transform:rotate(225deg)}
+.terrain-guide-body{display:grid;grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr);gap:28px;align-items:center;border-top:1px solid var(--line);padding:20px 30px 30px}
+.terrain-guide-copy{padding:12px 0 12px 4px}
+.terrain-guide-copy .eyebrow{font-size:9px;color:var(--teal);letter-spacing:1.8px}
+.terrain-guide-copy h2{font-size:clamp(24px,2.7vw,35px);line-height:1.25;letter-spacing:-.8px;font-weight:500;margin:17px 0 16px;max-width:15ch}
+.terrain-guide-copy p{max-width:30ch;font-size:13px;line-height:1.9;color:var(--muted)}
+.terrain-guide-key{display:flex;flex-wrap:wrap;gap:9px;margin-top:23px}
+.terrain-guide-key span{font-size:10px;border:1px solid var(--line);border-radius:30px;padding:8px 12px;color:var(--ink);background:var(--palette-wash)}
+.terrain-guide-body figure{margin:0;min-width:0;border:1px solid #c7a45b26;border-radius:20px;background:radial-gradient(ellipse,#cac39a12,transparent 70%);padding:12px}
+.terrain-guide-body img{display:block;max-width:100%;width:100%;height:auto;max-height:440px;object-fit:contain}
+@media(max-width:700px){.terrain-reading-guide>summary{padding:19px 21px}.terrain-guide-body{grid-template-columns:1fr;gap:13px;padding:18px}.terrain-guide-copy{padding:0 4px}.terrain-guide-copy h2{max-width:none;font-size:27px}.terrain-guide-copy p{max-width:none}.terrain-guide-key{margin-top:14px}.terrain-guide-body figure{padding:6px}}
+
+@media(max-width:760px){.community-page>.intro::before{inset:0 0 0 35%;opacity:.3}}
+@media(forced-colors:active){.community-page>.intro::before{display:none}}

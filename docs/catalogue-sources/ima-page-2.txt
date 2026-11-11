@@ -1,0 +1,10 @@
+Lapaire, Lotte Melchior Larsen, Andrzej Manecki, María Florencia Márquez-Zavalía, Robert F. Martin, Tania Martins, Florias Mees, Silvio Menchetti,
+Stuart J. Mills, Owen Missen, Bee Moua, José Nicolás Muñoz Gómez, Paulo Neves, Dieter Nickolay, Thomas Oberthür, Roberta Oberti, Mikhail
+Ostrooumov, Robert E. Pedersen, Herwig Pelckmans, Pierre Perroud, Gerald A. Peters, Adam Pieczka, Jakub Plášil, Olav Revheim, Arnold P. Ritte,
+André Robbemond, Andrew C. Roberts, Megan M. Rost, Mike Rousseau, Gavin Schmidtke, Stefan Schorn, Benjamin N. Schumer, Jason Schuminski,
+Elena Sokolova, Steve Sorrell, Simon Spürgin, Patrick Stanco, Chris J. Stanley, Roy Starkey, Aminjon Sultonov, Danka Szekvőlgyiová, Pavel Uher,
+Mike Unwalla, Luc Vandenberghe, Ivan Vighetto, Pietro Vignola, Jianxiong Wang, Jeff Weissman, Thomas Witzke, Liangfeng Yang, Ming Ye, Luminita
+Zaharia.
+
+Distribution terms and conditions: This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License.
+To view a copy of this license, visit         http://creativecommons.org/licenses/by-sa/3.0/                .

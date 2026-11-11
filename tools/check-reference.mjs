@@ -1,0 +1,51 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import vm from 'node:vm';
+const context=vm.createContext({});
+for(const file of ['data.js','i18n.js','discovery-data.js','discovery-i18n.js','catalogue-data.js','timescale-data.js','discovery.js','reference.js'])vm.runInContext(readFileSync(new URL('../'+file,import.meta.url),'utf8'),context);
+const run=code=>vm.runInContext(code,context);
+assert.equal(run('officialMinerals.length'),6252);
+assert.equal(run('officialRocks.length'),3668);
+assert.equal(run('geologicalScale.length'),189);
+assert.equal(run('new Set(officialMinerals.map(row=>row.id)).size'),6252);
+assert.equal(run('new Set(officialRocks.map(row=>row.id)).size'),3668);
+assert.equal(run('new Set(geologicalScale.map(unit=>unit.id)).size'),189);
+assert.equal(run('orderedScale().length'),189,'Every timescale unit must be reachable in the hierarchy.');
+assert.equal(run('geologicalScale.filter(unit=>unit.parent&&!scaleById.has(unit.parent)).length'),0);
+assert.equal(run('geologicalScale.filter(unit=>!Number.isFinite(unit.start)||!Number.isFinite(unit.end)||unit.start<=unit.end).length'),0);
+for(const parent of run('geologicalScale')){
+ const children=run(`scaleChildren(${JSON.stringify(parent.id)})`);
+ if(!children.length)continue;
+ assert.equal(children[0].start,parent.start,`${parent.id}: oldest subdivision must meet the parent boundary.`);
+ assert.equal(children.at(-1).end,parent.end,`${parent.id}: youngest subdivision must meet the parent boundary.`);
+ for(let i=1;i<children.length;i++)assert.equal(children[i-1].end,children[i].start,`${parent.id}: subdivisions must meet without gaps or overlaps.`);
+}
+assert.equal(run('scaleById.get("Hadean").start'),4567);
+assert.equal(run('scaleById.get("Meghalayan").end'),0);
+assert.equal(run('geologicalScale.filter(unit=>unit.rank==="Sub-Epoch").length'),11);
+assert.equal(run('scaleById.get("Pridoli").ranks.includes("Age")&&scaleById.get("Pridoli").ranks.includes("Epoch")'),true);
+assert.match(run('scaleAncestors("Meghalayan").map(unit=>unit.id).join("/")'),/Phanerozoic\/Cenozoic\/Quaternary\/Holocene\/LateHoloceneSubepoch\/Meghalayan/);
+assert.equal(run('timeRank="Age";visibleScale().length'),102);
+assert.equal(run('timeRank="";timeSearch="Meghal";visibleScale().length'),1);
+assert.equal(run('timeSearch="";expandedTimeIds.clear();visibleScale().length'),2);
+run('geologicalScale.forEach(unit=>expandedTimeIds.add(unit.id))');assert.equal(run('visibleScale().length'),189);
+assert.equal(run('officialMinerals.find(row=>row.name==="Quartz").formula'),'SiO₂');
+assert.equal(run('officialMinerals.find(row=>row.name==="Abellaite").formula'),'NaPb₂(CO₃)₂(OH)');
+assert.equal(run('catalogueView="minerals";catalogueQuery="Halite";filteredReference().some(row=>row.name==="Halite")'),true);
+assert.equal(run('catalogueQuery="";catalogueLetter="Z";filteredReference().every(row=>normalizedName(row.name).startsWith("z"))'),true);
+assert.equal(run('catalogueLetter="";catalogueStatus="G";filteredReference().every(row=>row.status==="G")'),true);
+assert.equal(run('catalogueView="rocks";catalogueStatus="O";filteredReference().length'),223);
+assert.equal(run('catalogueStatus="";catalogueType="Composite name";filteredReference().length'),646);
+assert.equal(run('officialRocks.some(row=>row.name.includes(" - A type"))'),false,'Reference names must not include copied source paragraphs.');
+const ref=run('officialMinerals.find(row=>row.name==="Diamond").id');
+assert.equal(run(`findGeoSpecimen(${JSON.stringify(ref)}).formula`),'C');
+assert.equal(run(`notebookSpecimens(${JSON.stringify(ref)})[0].id`),ref,'Reference specimens must remain selectable in field notes.');
+assert.match(run('localGeoAnswer("Meghalayan").text'),/Meghalayan/);
+assert.match(run('localGeoAnswer("Diamond").text'),/Composition: C/);
+for(const language of ['fr','ar']){
+ run(`currentLanguage=${JSON.stringify(language)}`);
+ for(const key of ['Mineral index','Rock index','Expand all','Geological hierarchy','Eon','Age','Previous page','Refresh'])assert.notEqual(run(`t(${JSON.stringify(key)})`),key);
+}
+const css=readFileSync(new URL('../styles.css',import.meta.url),'utf8');
+assert.ok(css.includes('.text-button,.save-button{display:inline-flex'));
+console.log('Reference checks passed: 6,252 minerals, 3,668 BGS names, 189 reachable ICS units, full hierarchy search, pagination filters, stable IDs, formula extraction, notebook integration, and French/Arabic controls.');

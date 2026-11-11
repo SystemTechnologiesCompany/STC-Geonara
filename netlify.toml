@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build:netlify"
+  publish = ".netlify-publish"
+
+[build.environment]
+  NODE_VERSION = "24"
+
+[server]
+  region = "fra"
+  size = "small"
+  includedFiles = ["*.js", "*.css", "index.html", "google.svg", "stc-team.json", "deployment-runtime.json", "assets/**", "tools/**"]
+
+[server.scale]
+  max = 1

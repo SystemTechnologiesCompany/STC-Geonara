@@ -1,0 +1,464 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>USGS Thesaurus</title>
+  <style>
+    .shutdown-banner {
+      background-color: #f8d7da;
+      color: #721c24;
+      padding: 15px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      border-bottom: 2px solid #f5c6cb;
+    }
+    .shutdown-banner a {
+      color: #721c24;
+      text-decoration: underline;
+    }
+  </style>
+  <meta name="keywords" content="controlled vocabulary; thesaurus; scientific terminology"/>
+  <meta name="description" content="USGS has developed a broad and shallow controlled vocabulary for indexing diverse scientific resources that are available on the web."/>
+  <meta name="author" content="Peter N. Schweitzer">
+  <meta name="publisher" content="USGS - U.S. Geological Survey"/>
+  <link href="stylesheets/common.css" rel="stylesheet" type="text/css" media="screen" />
+  <link href="stylesheets/custom.css" rel="stylesheet" type="text/css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="jquery/jquery-ui.min.css"/>
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+  <style type="text/css">
+    li {
+        margin-bottom: 4px;
+        }
+    .facet {
+        font-weight: bold;
+        color: #006633;
+        }
+    .h {
+        font-style: italic;
+        }
+    dd {
+        margin-left: 2em;
+        margin-bottom: 1em;
+        }
+  </style>
+  <script type="text/javascript" src="jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="jquery/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TKQR8KP');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!--USGS header --><header id="navbar" class="header-nav"  role="banner"><div class="tmp-container"><div class="header-search"><a class="logo-header" href="https://www.usgs.gov/" title="Home"><img class="img"  src="/thesaurus/images/logo.png"  alt="Home" /></a></div></div></header>
+
+<div class="container" id="maincontent">
+
+<h3>USGS Thesaurus</h3>
+
+<div class="panel panel-success">
+  <div class="panel-body">
+    <a href="/thesaurus/tab-term.html"      class="btn btn-sm btn-primary" title="Keyword finder, allows you to explore multiple controlled vocabularies through browse and search.">Explore</a>
+    <a href="/thesaurus/thesaurus-full.php" class="btn btn-sm btn-info"    title="Show a controlled vocabulary in the form of outline.">Outline</a>
+    <a href="/thesaurus/services.html"      class="btn btn-sm btn-success" title="Use USGS Thesaurus and related controlled vocabularies in your web interfaces.">Web Services</a>
+    <a href="/thesaurus/term-check.php"     class="btn btn-sm btn-default" title="Copy + paste texts to find matching controlled vocabulary terms.">Check terms</a>
+    <a href="/thesaurus/cga/"               class="btn btn-sm btn-default" title="A formal thesaurus relating named geographic areas such as countries, US states, counties, USGS map quadrangles, and hydrologic units, with unique identifiers for each area.">Common Geographic Areas</a>
+    <a href="/thesaurus/faq/"               class="btn btn-sm btn-default" title="Answers to questions you may have about the USGS Thesaurus and related controlled vocabularies.">FAQ</a>
+    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=urWTBhhLe02TQfMvQApUlEcuzXBzNz1HkvMYchsIVwdUNVBNREZNODVVSENKQ1lLN1JSRVpMTkVRTyQlQCN0PWcu" title="Propose that a new term be added to the thesaurus, or request a change to an existing term using this form." class="btn btn-sm btn-warning">Suggest a term</a>
+    <a href="/thesaurus/download/term-status.pdf" title="Check the status of submitted terms." class="btn btn-sm btn-warning">Term Review Status</a>
+  </div>  <!-- panel-body -->
+</div>  <!-- panel -->
+
+<h4>Purpose</h4>
+The USGS Thesaurus provides a controlled vocabulary of scientific concepts relevant to the mission and work of the USGS. This controlled vocabulary helps to categorize USGS information and allows people and computers to find collections of information resources that have common characteristics.
+
+<h4>Content</h4>
+<p>The USGS Thesaurus is structured as a hierarchy of terms because relationships between concepts are represented.
+For example, <em>Sciences</em> is broad and general concept. A more specific type of <em>Sciences</em> is <em>Earth Sciences</em>. In the USGS Thesaurus, <em>Sciences</em> is a broader or parent term to Earth Sciences.
+The USGS Thesaurus has the following top-level categories that are used to group scientific concepts.</p>
+
+<dl>
+<dt>Sciences</dt>
+<dd>Major educational fields, fields of study, and professional groupings within USGS.</dd>
+
+<dt>Methods</dt>
+<dd>Techniques, methods, procedures, or strategies for research, management, collection, or analysis of scientific information in USGS.</dt>
+
+<dt>Topics</dt>
+<dd>Themes, subjects, and concerns for which USGS information resources are relevant.</dd>
+
+<dt>Product types</dt>
+<dd>General representation of the information in a resource, such as a map or dataset.</dd>
+
+<dt>Time periods</dt>
+<dd>Geologic time periods and seasons of the year.</dd>
+
+<dt>Institutional structures and activities</dt>
+<dd>Activities, processes, and organizational concepts.</dd>
+</dl>
+
+
+<div class="panel panel-info">
+  <div class="panel-heading"><h4 class="panel-title">Recent terms added to the USGS Thesaurus</h4></div>
+  <div class="panel-body">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <h4 class="list-group-item-heading">2026</h4>
+        <p class="list-group-item-text">
+ <a href="term-simple.php?thcode=2&amp;code=2305" target="_blank" title="Uncontrolled fires that originate as a result of natural phenomena or human activities in natural areas such as forests, grasslands, or shrub lands, but may also spread to structures and human-occupied environments.">wildfires</a>
+        </p>
+      </li>
+      <li class="list-group-item">
+        <h4 class="list-group-item-heading">2025</h4>
+        <p class="list-group-item-text">
+ <a href="term-simple.php?thcode=2&amp;code=378" target="_blank" title="An aggregation of field monitoring stations that fulfill a common purpose.">monitoring networks</a>
+ and
+<a href="term-simple.php?thcode=2&amp;code=556" target="_blank" title="A digital representation of surface water features and water flow patterns, created from elevation data and landscape classifications that identify channels and depressions that hold and move water.">elevation-derived hydrography</a>
+        </p>
+      </li>
+      <li class="list-group-item">
+        <h4 class="list-group-item-heading">2024</h4>
+        <p class="list-group-item-text">
+ <a href="term-simple.php?thcode=2&amp;code=955" target="_blank" title="Non-destructive chemical analysis technique in which a sample of material is irradiated with visible or near-infrared light from a laser, and the wavelength-dependent observations are used to understand chemical structure, phase and polymorphy, crystallinity and molecular interactions of the material.">Raman spectroscopy</a>
+ and
+<a href="term-simple.php?thcode=2&amp;code=1164" target="_blank" title="Any species that is likely to become an endangered species within the foreseeable future throughout all or a significant portion of its range.">threatened species</a>
+        </p>
+      </li>
+      <li class="list-group-item">
+        <h4 class="list-group-item-heading">2023</h4>
+        <p class="list-group-item-text">
+<a href="term-simple.php?thcode=2&amp;code=2302" target="_blank" title="Mineral commodity barium sulfate used in many applications where a high-density non-metallic subsance is needed, such as drilling mud and medical technology.">barite</a>,
+ <a href="term-simple.php?thcode=2&amp;code=2301" target="_blank" title="Scientific planning, activities, and information intended to support equitable access and use by all people who may be affected.">environmental justice</a>,
+ <a href="term-simple.php?thcode=2&amp;code=2303" target="_blank" title="Mineral comodity calcium fluoride used in industrial applications and to produce hydrofluoric acid.">fluorite</a>,
+ and
+<a href="term-simple.php?thcode=2&amp;code=2304" target="_blank" title="Mineral commodity composed of carbon arranged in sheet structures used in many ways, most recently in battery technology.">graphite</a>
+        </p>
+      </li>
+      <li class="list-group-item">
+        <h4 class="list-group-item-heading">2022</h4>
+        <p class="list-group-item-text">
+<a href="term-simple.php?thcode=2&amp;code=2297" target="_blank" title="Geographic areas for which a valuable resource is estimated.  Frequently defined in two or more dimensions, for example specifying underground formations in a given geographic area.  Functions or services may be estimated in addition to material resources.">assessment units</a>,
+<a href="term-simple.php?thcode=2&amp;code=2288" target="_blank" title="Processes by which a living organism acquires, produces, utilizes, or transforms energy.">bioenergetics</a>,
+<a href="term-simple.php?thcode=2&amp;code=2299" target="_blank" title="Biochemical, physiological, morphological, or histopathological characteristics of organisms that signify exposure to contaminants.  Also used for biogeochemical measurements of rocks to detect biological origin.">biomarkers</a>,
+<a href="term-simple.php?thcode=2&amp;code=2294" target="_blank" title="Estimates of the storage capacity of carbon dioxide in geologic units at depths of 3,000 to 13,000 feet that are capable of maintaining carbon dioxide in a supercritical state.">carbon dioxide storage assessment</a>,
+<a href="term-simple.php?thcode=2&amp;code=2296" target="_blank" title="A form of geologic carbon dioxide storage in which it reacts with rocks and minerals to form solid and stable carbonate materials.  Includes mineralization in mafic and ultramafic bedrock, mine tailings, and alkaline industrial wastes at the surface.">carbon mineralization</a>,
+<a href="term-simple.php?thcode=2&amp;code=2290" target="_blank" title="Effectiveness of an earth material in reflecting or emitting radiation, varying by wavelength.  Measurements are made over the infrared part of the electromagnetic spectrum in a laboratory to compare with remotely-sensed data obtained by airborne or satellite imaging systems.">electromagnetic reflectance and emissivity</a>,
+<a href="term-simple.php?thcode=2&amp;code=2292" target="_blank" title="Methods and technologies for holding energy to be recovered at a later time.">energy storage</a>,
+<a href="term-simple.php?thcode=2&amp;code=2293" target="_blank" title="Use of subsurface reservoirs to store energy that can be recovered at a later time using thermal [energy], gravity, or stored air or natural gases.">geologic energy storage</a>,
+<a href="term-simple.php?thcode=2&amp;code=2291" target="_blank" title="Lateral variation of the three-dimensional vector components of gravity, typically measured using airborne sensors.">gravity gradient</a>,
+<a href="term-simple.php?thcode=2&amp;code=2295" target="_blank" title="Interactions among groundwater, hydrocarbons, and rock properties of subsurface geological formations, affecting the potential of those formations to form, trap, and permit the passage and extraction of hydrocarbons.">hydrocarbon reservoir processes</a>,
+<a href="term-simple.php?thcode=2&amp;code=2298" target="_blank" title="An iterative approach to estimate the form and characteristics of a physical system explained by observations or measurements. Frequently used to determine a subsurface geological structure from measurements of physical properties obtained at or near the earth's surface.">inverse modeling</a>,
+and
+<a href="term-simple.php?thcode=2&amp;code=2289" target="_blank" title="Modeling of systems such as ecosystems to predict the consequences of natural events and management actions by describing how specified events and actions may change the components and relationships in the system.">state and transition modeling</a>
+        </p>
+      </li>
+      <li class="list-group-item">
+        <h4 class="list-group-item-heading">2021</h4>
+        <p class="list-group-item-text">
+<a href="term-simple.php?thcode=2&amp;code=2275" target="_blank" title="An analytical procedure that provides values to help assess the acid-producing and acid-neutralizing potential of overburden rocks prior to coal mining and other large-scale excavations.">acid-base accounting</a>,
+<a href="term-simple.php?thcode=2&amp;code=2276" target="_blank" title="Geochemical capacity of earth materials to affect the pH of waters flowing through them.">acid neutralizing potential</a>,
+<a href="term-simple.php?thcode=2&amp;code=2288" target="_blank" title="Processes by which a living organism acquires, produces, utilizes, or transforms energy.">bioenergetics</a>,
+<a href="term-simple.php?thcode=2&amp;code=2268" target="_blank" title="Communities commonly found on the soil surface in arid and semi-arid ecosystems, these consist of mosses, cyanobacteria, lichens, algae, and microfungi, which weave together and adhere to the soil to form a matrix that lessens erosion, supports nitrogen fixation, and retains moisture. These organisms are important to the functioning of ecosystems and to the organization of plant and soil communities.">biological soil crusts</a>,
+<a href="term-simple.php?thcode=2&amp;code=2277" target="_blank" title="The rate and amount of carbon exchanged between the oceans, atmosphere, land, and living things.">carbon flux</a>,
+<a href="term-simple.php?thcode=2&amp;code=2273" target="_blank" title="Solid waste material remaining from the burning of coal.">coal ash</a>,
+<a href="term-simple.php?thcode=2&amp;code=2286" target="_blank" title="Representation of a system indicating the relationships among concepts, objects, or processes involved in the system, used to help people understand or simulate the system it represents. Often realized using diagrams or generalized schemas.">conceptual modeling</a>,
+<a href="term-simple.php?thcode=2&amp;code=2281" target="_blank" title="Measure of the persistence of systems and of their ability to absorb change and disturbance and still maintain the same relationships between populations or state variables. (Holling, 1973)">ecosystem resilience</a>,
+<a href="term-simple.php?thcode=2&amp;code=2278" target="_blank" title="Biological or physical features whose presence, characteristics, or behavior reflect environmental parameters of interest that could not be observed or measured directly.">environmental proxies</a>,
+<a href="term-simple.php?thcode=2&amp;code=2282" target="_blank" title="Movement or migration of fluids, including petroleum and other chemicals through earth materials by natural or anthropogenic forces.">fluid migration</a>,
+<a href="term-simple.php?thcode=2&amp;code=2284" target="_blank" title="Any consequences of shaking, including liquefaction, landslide, and lateral spread, that affects the stability of the ground.">ground failure</a>,
+<a href="term-simple.php?thcode=2&amp;code=2283" target="_blank" title="Seismic activity such as earthquakes and tremors of low magnitude resulting from human activity that altered crustal stresses and strains on local faults and fractures.">induced seismicity</a>,
+<a href="term-simple.php?thcode=2&amp;code=2269" target="_blank" title="Plastic particles less than 5 millimeters in diameter that come from a wide variety of sources, found in a variety of forms, including fibers, pellets/beads, foams, films, fragments, and tire particles, and reach aquatic environments through diverse pathways.">microplastic contamination</a>,
+<a href="term-simple.php?thcode=2&amp;code=2266" target="_blank" title="Era of geologic time approximately 1.6 to 1 billion years ago. https://doi.org/10.3133/fs20103059">Mesoproterozoic</a>,
+<a href="term-simple.php?thcode=2&amp;code=2285" target="_blank" title="Human-constructed representation of processes, phenomena, or objects so that the behaviors, characteristics and relationships among things that are being studied can be understood without exhaustive data collection and analysis.">modeling</a>,
+<a href="term-simple.php?thcode=2&amp;code=2267" target="_blank" title="Era of geologic time approximately 2.5 to 1.6 billion years ago. https://doi.org/10.3133/fs20103059">Paleoproterozoic</a>,
+<a href="term-simple.php?thcode=2&amp;code=2274" target="_blank" title="Per- and polyfluoroalkyl substances (PFAS) are a group of man-made chemical compounds that are an emerging contaminant.">PFAS</a>,
+<a href="term-simple.php?thcode=2&amp;code=2287" target="_blank" title="Physical arrangement of materials or objects, to enact processes involving them. The system is understood by observing and reporting the resulting arrangement, behavior, and composition of those materials or objects.">physical modeling</a>,
+<a href="term-simple.php?thcode=2&amp;code=2263" target="_blank" title="A group of chemically similar metal elements that tend to occur in the same types of mineral deposits.">platinum-group elements</a>,
+<a href="term-simple.php?thcode=2&amp;code=2270" target="_blank" title="Water produced during generation and development of energy resources, particularly hydrocarbons, as well as related fluids injected into reservoirs for energy development and associated waste disposal.">produced water</a>,
+<a href="term-simple.php?thcode=2&amp;code=2280" target="_blank" title="Terrestrial and marine areas that are designated and managed for the preservation of biological diversity or other natural, recreational, or cultural uses.">protected areas</a>,
+<a href="term-simple.php?thcode=2&amp;code=2272" target="_blank" title="Solid waste material produced by the industrial processing of ore materials.">slag</a>,
+<a href="term-simple.php?thcode=2&amp;code=2271" target="_blank" title="Waste solid materials produced by industrial processing of earth materials, not simply material extracted in the search for ores.">solid industrial waste material</a>,
+<a href="term-simple.php?thcode=2&amp;code=2289" target="_blank" title="Modeling of systems such as ecosystems to predict the consequences of natural events and management actions by describing how specified events and actions may change the components and relationships in the system.">state and transition modeling</a>,
+<a href="term-simple.php?thcode=2&amp;code=2265" target="_blank" title="Mathematical analysis, using photogrammetric principles, of multiple images that depict the same subject from different angles to derive geometrical information and relationships in three-dimensional space that are not inherent in any single image. Often used for deriving land elevation or large scale orthoimagery from a collection of aerial photographs.">structure from motion</a>,
+and
+<a href="term-simple.php?thcode=2&amp;code=2279" target="_blank" title="Chemical alteration of organic material within sediments and sedimentary rocks as a result of heat. Measures of thermal maturation indicate the extent of transformation of detrital organic material into coal and petroleum.">thermal maturation</a>.
+        </p>
+      </li>
+      <li class="list-group-item">
+        <h4 class="list-group-item-heading">2020</h4>
+        <p class="list-group-item-text">
+<a href="term-simple.php?thcode=2&amp;code=2264" target="_blank" title="A measure of the strength of reflection from small particles suspended in water. It is usually measured by sending a pulse of sound or light through the water and measuring the sound or light that is returned. Water column reflectivity can be used to measure the concentration of suspended particles.">water column reflectivity</a>,
+<a href="term-simple.php?thcode=2&amp;code=2261" target="_blank" title="A decision-making process aiming to reduce uncertainty through system monitoring and feedback, used for environmental or resource management.">adaptive management</a>.
+        </p>
+      </li>
+      <li class="list-group-item">
+        <h4 class="list-group-item-heading">2019</h4>
+        <p class="list-group-item-text">
+<a href="term-simple.php?thcode=2&amp;code=2094" target="_blank" title="A non-fuel mineral or mineral material essential to the economic and national security of the US, the supply chain of which is vulnerable to disruption, and that serves an essential function in the manufacturing of a product, the absence of which would have significant consequences for our economy or our national security.">critical minerals</a>.
+        </p>
+      </li>
+      <li class="list-group-item">
+        <h4 class="list-group-item-heading">2018</h4>
+        <p class="list-group-item-text">
+<a href="term-simple.php?thcode=2&amp;code=2093" target="_blank" title="Geospatial data describing the areas from which samples were taken or observations were made, typically polygonal. May be approximate, as in bounding coordinates, or precise.">study areas</a>,
+<a href="term-simple.php?thcode=2&amp;code=2092" target="_blank" title="Derivation of contours, isolines or isopleths following equal values of some characteristic across an area. For example, elevation contours indicate lines of equal elevation on a map.">contouring</a>,
+<a href="term-simple.php?thcode=2&amp;code=2091" target="_blank" title="Acoustic energy received by a sonar system, providing a measure of the roughness of the lakebed.">lakebed acoustic reflectivity</a>,
+<a href="term-simple.php?thcode=2&amp;code=2090" target="_blank" title="Characteristics of the bottom of inland bodies of water.">lakebed characteristics</a>,
+<a href="term-simple.php?thcode=2&amp;code=2089" target="_blank" title="Thickness of earth material layers or groups of such layers, often portrayed as isopachs (contours) or gridded data.">stratigraphic thickness</a>,
+<a href="term-simple.php?thcode=2&amp;code=2088" target="_blank" title="Procedures carried out in a laboratory under controlled conditions to test specific scientific hypotheses.">laboratory experiments</a>,
+<a href="term-simple.php?thcode=2&amp;code=2087" target="_blank" title="Land-based resistivity survey where current is applied to the ground using an array of electrodes and apparent resistivity of the subsurface is measured, giving estimates of the spatial variability of resistivity (for example, variations in pore water salinity).">electrical resistivity imaging</a>,
+<a href="term-simple.php?thcode=2&amp;code=2086" target="_blank" title="Ship-based method of analyzing apparent resistivity of the sub-bottom (for example, spatial variation in pore-water salinity) by measuring the induced electromagnetic response to a current generated by the instruments.">continuous resistivity profiling</a>,
+<a href="term-simple.php?thcode=2&amp;code=2085" target="_blank" title="Passive geophysical technique that uses the earth's natural electromagnetic field to investigate the spatial variation of electrical resistivity in the subsurface.">magnetotelluric surveying</a>, and
+<a href="term-simple.php?thcode=2&amp;code=2084" target="_blank" title="Electromagnetic imaging instrument using radar to investigate shallow subsurface structure.">ground penetrating radar</a>.
+        </p>
+      </li>
+      <li class="list-group-item">
+        <h4 class="list-group-item-heading">2017</h4>
+        <p class="list-group-item-text">
+<a href="term-simple.php?thcode=2&amp;code=2083" target="_blank" title="Hyperbolic radio navigation system used for near-shore waters." target="_blank" title="Hyperbolic radio navigation system used for near-shore waters.">LORAN-C navigation</a>,
+<a href="term-simple.php?thcode=2&amp;code=2082" target="_blank" title="Preparation of study materials by dividing or slicing cores, samples, or other collected materials." target="_blank" title="Preparation of study materials by dividing or slicing cores, samples, or other collected materials.">subsampling</a>, and
+<a href="term-simple.php?thcode=2&amp;code=2077" target="_blank" title="Operational records for observation, inventory, sampling, or monitoring activities." target="_blank" title="Operational records for observation, inventory, sampling, or monitoring activities.">field activity logs</a>.
+        </p>
+      </li>
+      <li class="list-group-item">
+        <h4 class="list-group-item-heading">2016</h4>
+        <p class="list-group-item-text">
+<a href="term-simple.php?thcode=2&amp;code=2076" target="_blank" title="Landward relocation of infrastructure to reduce the risk from coastal hazards.">coastal infrastructure relocation</a>,
+<a href="term-simple.php?thcode=2&amp;code=2075" target="_blank" title="Mitigating coastal erosion by managing the sediment budget (for example, beach nourishment or sand bypassing) or restoring dunes and wetlands (for example, by planting erosion-resistant vegetation).">soft shoreline stabilization</a>,
+<a href="term-simple.php?thcode=2&amp;code=2074" target="_blank" title="Use of engineered structures to armor or otherwise protect the shoreline against erosional agents such as waves and currents. Includes breakwaters, bulkheads, seawalls, groins, jetties, and revetments.">hard shoreline stabilization</a>,
+<a href="term-simple.php?thcode=2&amp;code=2073" target="_blank" title="Actions taken to reduce risk of physical disruption in coastal environments.">mitigation of coastal hazards</a>,
+<a href="term-simple.php?thcode=2&amp;code=2072" target="_blank" title="Seaward migration of the shoreline resulting from the addition of earth materials.">shoreline accretion</a>,
+<a href="term-simple.php?thcode=2&amp;code=2071" target="_blank" title="Subsidence of the coast accompanied by landward displacement of the shoreline.">coastal submergence</a>,
+<a href="term-simple.php?thcode=2&amp;code=2070" target="_blank" title="Uplift of the coast accompanied by seaward displacement of the shoreline.">coastal emergence</a>,
+<a href="term-simple.php?thcode=2&amp;code=2069" target="_blank" title="The slow, landward movement of barrier islands in response to sea level rise and repeated storm washover.">barrier island migration</a>,
+<a href="term-simple.php?thcode=2&amp;code=2068" target="_blank" title="Currents caused by tidal changes in water level from one body of water to another.">tidal currents</a>,
+<a href="term-simple.php?thcode=2&amp;code=2067" target="_blank" title="Use of a mechanical device to seize a volume of unconsolidated surficial material for study. This term applies when the device used is specifically crafted for grab sampling.">grab sampling</a>,
+<a href="term-simple.php?thcode=2&amp;code=2066" target="_blank" title="Application of vibration to a coring device in order to achieve greater penetration for sampling unconsolidated material.">vibracoring</a>,
+<a href="term-simple.php?thcode=2&amp;code=2065" target="_blank" title="Use of machinery to drive a rotating bit through earth materials in order to sample below the surface.">rotary drilling</a>,
+<a href="term-simple.php?thcode=2&amp;code=2064" target="_blank" title="Use of a small, hand-held tube pressed into unconsolidated material for sampling.">push coring</a>,
+<a href="term-simple.php?thcode=2&amp;code=2063" target="_blank" title="Use of a device with rotating blades and possibly helical flanges to dig holes in unconsolidated material for subsurface sampling.">augering</a>,
+<a href="term-simple.php?thcode=2&amp;code=2062" target="_blank" title="Use of a piston mechanism and a weight with a triggering mechanism to drive a coring tube deep into underwater sediments for extraction and study.">piston coring</a>,
+<a href="term-simple.php?thcode=2&amp;code=2061" target="_blank" title="Use of a simple tube pushed into underwater sediments by an overhanging weight, to extract relatively undisturbed material for study.">gravity coring</a>,
+<a href="term-simple.php?thcode=2&amp;code=2060" target="_blank" title="Use of a rectangular box pushed into soft sediment with a spade to facilitate lifting the sampled material, to isolate and extract relatively undisturbed underwater sediment.">box coring</a>,
+<a href="term-simple.php?thcode=2&amp;code=2059" target="_blank" title="A roughly periodic variation in Pacific ocean sea-surface temperature causing changes in weather world-wide.">El Nino-Southern Oscillation</a>,
+<a href="term-simple.php?thcode=2&amp;code=2058" target="_blank" title="Decrease in the pH of ocean waters as a result of the increase in atmospheric carbon dioxide concentration.">ocean acidification</a>,
+<a href="term-simple.php?thcode=2&amp;code=2057" target="_blank" title="Industrial and commercial processes by which material resources are extracted, used or consumed, and disposed or recycled.">materials flow (commodities)</a>,
+<a href="term-simple.php?thcode=2&amp;code=2056" target="_blank" title="Statistics indicating the commercial interests in material resources, typically mineral commodities, energy, or forest or fishery resources.">resource supply and demand</a>, and
+<a href="term-simple.php?thcode=2&amp;code=2055" target="_blank" title="Nuclear or mitochondrial DNA released into the environment as bodily secretions, hair, or similar materials other than whole individuals. Used to detect organisms that are not observed directly.">environmental DNA</a>.
+        </p>
+      </li>
+      <li class="list-group-item">
+        <h4 class="list-group-item-heading">2015</h4>
+        <p class="list-group-item-text">
+<a href="term-simple.php?thcode=2&amp;code=2054" target="_blank" title="Methods of imaging the structure of sediments below the sea floor using ship-borne or towed sensors with a variety of sound sources.">sub-bottom profiling</a>,
+<a href="term-simple.php?thcode=2&amp;code=2053" target="_blank" title="Acoustic energy received by a side-scan sonar system, providing a measure of the roughness of the sea floor.">sea-floor acoustic reflectivity</a>,
+<a href="term-simple.php?thcode=2&amp;code=2052" target="_blank" title="Aerial navigation data indicating the geographic path flown during airborne geophysical survey operations.">survey flight lines</a>, and
+<a href="term-simple.php?thcode=2&amp;code=2051" target="_blank" title="Compilation in digital form of data previously presented in analog forms such as contours on paper maps, plots, or other graphical materials, so that the digital data produced approximates the scientific measurements used to create the original printed materials.">digitization</a>.
+        </p>
+      </li>
+      <li class="list-group-item">
+        <h4 class="list-group-item-heading">2014</h4>
+        <p class="list-group-item-text">
+<a href="term-simple.php?thcode=2&amp;code=2050" target="_blank" title="Use of water to raise aquatic organisms, typically for food, restoration, conservation, or sport.">aquaculture water use</a>,
+<a href="term-simple.php?thcode=2&amp;code=2049" target="_blank" title="Provision of water by local governments or private companies for residential and light industrial use.">public supply water use</a>,
+<a href="term-simple.php?thcode=2&amp;code=2048" target="_blank" title="Navigational data indicating the path of a ship while surveying, including time as well as horizontal coordinates.">survey ship tracklines</a>,
+<a href="term-simple.php?thcode=2&amp;code=2047" target="_blank" title="Transfer of sand from offshore areas to resupply beach areas that have been eroded.">beach nourishment</a>,
+<a href="term-simple.php?thcode=2&amp;code=2046" target="_blank" title="Composite images formed by overlapping existing images, typically arranged to achieve greater spatial coverage.">image mosaics</a>,
+<a href="term-simple.php?thcode=2&amp;code=2045" target="_blank" title="Internet services providing subsets of data in response to specific web requests. For APIs that are not accessible through the internet, use scientific software.">application programming interfaces</a>,
+<a href="term-simple.php?thcode=2&amp;code=2044" target="_blank" title="Layers in soil defined by physical, chemical, biological, or mineralogical properties which vary with depth.">soil horizons</a>, and
+<a href="term-simple.php?thcode=2&amp;code=2043" target="_blank" title="Deposits in which particular minerals are concentrated, typically noticed and studied if the minerals have economic value.">mineral deposits</a>.
+        </p>
+      </li>
+      <li class="list-group-item">
+        <h4 class="list-group-item-heading">2013</h4>
+        <p class="list-group-item-text">
+<a href="term-simple.php?thcode=2&amp;code=2042" target="_blank" title="Physical malformation of organisms typically resulting from exposure to contaminants, disease, or adverse environmental conditions.">anatomical deformities</a>,
+<a href="term-simple.php?thcode=2&amp;code=2038" target="_blank" title="Acoustic technique for creating oblique backscatter imagery of the seafloor.">sidescan sonar</a>,
+<a href="term-simple.php?thcode=2&amp;code=2037" target="_blank" title="Acoustic technique for determining depths or creating backscatter imagery in a wide swath of seafloor centered below the instrument platform.">interferometric sonar</a>,
+<a href="term-simple.php?thcode=2&amp;code=2036" target="_blank" title="Acoustic technique for determining depths or creating backscatter imagery in a wide swath of seafloor centered below the instrument platform.">multibeam sonar</a>,
+<a href="term-simple.php?thcode=2&amp;code=2035" target="_blank" title="Acoustic technique for determining seafloor depth directly below the instrument platform.">single-beam echo sounder</a>,
+<a href="term-simple.php?thcode=2&amp;code=2034" target="_blank" title="Injection of water and other fluids through a well into geologic formations in order to increase the permeability of the rock units and thus permit natural gas or oil to be produced from them.">hydraulic fracturing</a>,
+<a href="term-simple.php?thcode=2&amp;code=2033" target="_blank" title="Disruption of once-continuous natural habitats by human activities such as agriculture, urbanization, resource extraction, and the construction of roads, railways, fences, and pipelines.">habitat fragmentation</a>,
+<a href="term-simple.php?thcode=2&amp;code=2032" target="_blank" title="Collection of material from the bottom of a body of water by dragging an open container along the floor of the water body and returning the collected material to the investigators.">dredge sampling</a>,
+<a href="term-simple.php?thcode=2&amp;code=2031" target="_blank" title="Landscape characterized by dissolution features in carbonate or evaporite terranes, often containing caves and sinkholes.">karst</a>,
+<a href="term-simple.php?thcode=2&amp;code=2030" target="_blank" title="Value of ecosystem functions in supporting, sustaining, or enriching human life.">ecosystem services</a>, and
+<a href="term-simple.php?thcode=2&amp;code=2029" target="_blank" title="Observation or monitoring activities that include contributions from amateur or non-professional scientists or other citizen volunteers.">citizen science programs</a>.
+        </p>
+      </li>
+      <li class="list-group-item">
+        <h4 class="list-group-item-heading">2012</h4>
+        <p class="list-group-item-text">
+<a href="term-simple.php?thcode=2&amp;code=2028" target="_blank" title="Temperature and temperature gradients in soil and other near-surface unconsolidated earth materials">soil temperature</a>,
+<a href="term-simple.php?thcode=2&amp;code=2027" target="_blank" title="Water content of soil and other near-surface unconsolidated earth material">soil moisture</a>,
+<a href="term-simple.php?thcode=2&amp;code=2026" target="_blank" title="Disease affecting hibernating bats caused by a white fungus infecting the skin of the muzzle, ears, and wings">White-Nose Syndrome</a>, and
+<a href="term-simple.php?thcode=2&amp;code=2025" target="_blank" title="Geographic distribution and temporal trends of human habitation in specific areas">population (human)</a>.
+        </p>
+      </li>
+      <li class="list-group-item">
+        <h4 class="list-group-item-heading">2011</h4>
+        <p class="list-group-item-text">
+<a href="term-simple.php?thcode=2&amp;code=2024" target="_blank" title="Information gathering by asking questions of selected people or organizations.">statistical surveying</a>,
+<a href="term-simple.php?thcode=2&amp;code=2023" target="_blank" title="Physical processes by which previously-used materials are converted from scrap and waste to reusable forms.">recycling</a>,
+<a href="term-simple.php?thcode=2&amp;code=2022" target="_blank" title="Local changes in the mineralogy of a rock body due to low-grade metamorphism, weathering, or both. May indicate underlying mineral deposits.">alteration</a>,
+<a href="term-simple.php?thcode=2&amp;code=2021" target="_blank" title="Injection of steam, gas, or other chemical compounds into hydrocarbon reservoirs to stimulate the production of usable oil beyond what is possible through natural pressure, water injection, and pumping at the wellhead.">enhanced oil recovery</a>,
+<a href="term-simple.php?thcode=2&amp;code=2002" target="_blank" title="Activities focused on the creation, documentation, and preservation of scientific data with the intent that the data continue to be usable in the future.">data management</a>,
+<a href="term-simple.php?thcode=2&amp;code=2003" target="_blank" title="Design, deployment, and maintenance of computing systems that support creation, maintenance, and use of scientific information.">information system administration</a>,
+<a href="term-simple.php?thcode=2&amp;code=2004" target="_blank" title="Design, development, and deployment of methods to convey scientific information to potential users.">data communication</a>,
+<a href="term-simple.php?thcode=2&amp;code=2005" target="_blank" title="Strategies which, when implemented, enable disparate data to be combined in a single analysis. Includes combination of similar data from small components into larger, coherent assemblages as well as recognizing and exploiting relationships linking or connecting data that are maintained separately. May include efforts to make scientific information more easily found and obtained.">data integration</a>,
+<a href="term-simple.php?thcode=2&amp;code=2006" target="_blank" title="Design and use of software and interfaces that facilitate interchange of information among people or organizations that produce scientific data and the potential users of those data. Primarily refers to interactive web interfaces and services that enable discussion, collaboration, and comment on the data.">social network development</a>,
+<a href="term-simple.php?thcode=2&amp;code=2007" target="_blank" title="Design of user interfaces for scientific information that are accessed using web browser software.">web interface development</a>,
+<a href="term-simple.php?thcode=2&amp;code=2008" target="_blank" title="Design and deployment of data services accessed using the hypertext transfer protocol.">web service development</a>,
+<a href="term-simple.php?thcode=2&amp;code=2009" target="_blank" title="Design of the structure and format of digital queries and responses concerning scientific data resources. Refers to exchanges in which the structure and content of the queries is interpreted by software both when generated and when received.">markup and query language development</a>,
+<a href="term-simple.php?thcode=2&amp;code=2010" target="_blank" title="Design of the structure, format, and arrangement of scientific data in digital files in order to facilitate their transfer and effective use by people and organizations other than the originators.">data packaging</a>,
+<a href="term-simple.php?thcode=2&amp;code=2011" target="_blank" title="Design of conceptual, logical, and physical information system components (both data and software) to support effective maintenance, integration, or use of the data.">information architecture</a>,
+<a href="term-simple.php?thcode=2&amp;code=2012" target="_blank" title="Design and development of information systems that represent and relate concepts needed to identify, specify, organize, categorize, or characterize scientific information effectively. Includes development of controlled vocabularies as well as hierarchical and networked concept schemes such as thesauri and ontologies.">knowledge organization system development</a>,
+<a href="term-simple.php?thcode=2&amp;code=2013" target="_blank" title="Retrospective modification of the structure, format, packaging, or documentation of an existing scientific data resource to improve the likelihood of effective use of the data by individuals or organizations who did not create the data.">improvement of scientific data usability</a>,
+<a href="term-simple.php?thcode=2&amp;code=2014" target="_blank" title="Design, development, and implementation of methods for ensuring that scientific information remain accessible and usable despite changes in technology and strategic directions in the originating organzation.">data preservation</a>,
+<a href="term-simple.php?thcode=2&amp;code=2015" target="_blank" title="Curation and maintenance of the documentation for scientific information resources. Includes editing the metadata to improve consistency, completeness, and correctness, and modification of the structure of the documentation to improve its effectiveness in actual use.">metadata management</a>,
+<a href="term-simple.php?thcode=2&amp;code=2016" target="_blank" title="Reduction of the risk that scientific information will be lost or become unusable in the future. Includes copying data from unstable to stable media, conversion of data files from unusable to usable formats, and creation of metadata allowing further changes to the data and other characteristics to be documented.">data rescue</a>,
+<a href="term-simple.php?thcode=2&amp;code=2017" target="_blank" title="Design and implementation of strategies for arranging information within database management systems (including but not restricted to relational database management systems) so that the integrity and consistency of the information supports its intended uses.">database administration</a>,
+<a href="term-simple.php?thcode=2&amp;code=2018" target="_blank" title="Methods for ensuring that computers communicate effectively with one another and follow established standards and guidelines for ensuring integrity in exchanging information and efficiency in operation.">network administration</a>,
+<a href="term-simple.php?thcode=2&amp;code=2019" target="_blank" title="Methods for ensuring that information systems are used for their intended purpose by those entitled to use them and that the information they contain retains its integrity and, where appropriate, confidentiality.">information system security</a>,
+<a href="term-simple.php?thcode=2&amp;code=2020" target="_blank" title="Design and development of procedures and instructions by which information is modified or presented.">software development</a>,
+<a href="term-simple.php?thcode=2&amp;code=2001" target="_blank" title="Estimation of chemical element concentration by measuring the energy level of secondary X-rays generated when the sample is bombarded with high-energy X-rays or gamma rays.">x-ray fluorescence</a>,
+<a href="term-simple.php?thcode=2&amp;code=2000" target="_blank" title="Organic compounds present in water, typically as anthropogenic contaminants including pharmaceuticals, pesticides, and herbicides.">dissolved organic compounds</a>,
+<a href="term-simple.php?thcode=2&amp;code=1999" target="_blank" title="Metal elements in solution, of concern in studies of hazards such as mine drainage and of water resource usability.">dissolved metals</a>,
+<a href="term-simple.php?thcode=2&amp;code=1998" target="_blank" title="Earth materials removed during mining and concentrated in piles or beds, typically near the site of extraction. Tailings are mine waste that has been processed to remove valuable components; unprocessed mine waste includes overburden removed to reach ores.">mine waste</a>, and
+<a href="term-simple.php?thcode=2&amp;code=1997" target="_blank" title="Use of prevailing wind as a source of energy through wind turbines.">wind energy</a>.
+        </p>
+      </li>
+
+    </ul>
+  </div>  <!-- panel-body -->
+</div>  <!-- panel -->
+
+<hr/>
+
+<h4>Technical guide</h4>
+
+<p>Detailed technical information is available in <a href="faq/">Frequently Asked Questions</a> list.</p>
+<p>
+See also:
+<a href="https://geology.usgs.gov/tools/metadata/tools/doc/keywords.html" target="_blank"><b>Keywords in metadata:</b> what to expect from them, what not to expect; how to choose them; how to get the most value from them.</a>
+</p>
+
+<p>
+The thesaurus is limited in depth and specificity of coverage. It does not
+attempt to replicate existing controlled vocabularies such as AGI's GeoRef.
+The intention is to provide sufficient contextual cues for the information
+seeker to determine the relevance of a resource for his or her concern, not
+to locate precisely the answer to a specific user question.
+</p>
+
+<div class="panel panel-default">
+  <div class="panel-heading"><h4 class="panel-title">History</h4></div>
+  <div class="panel-body">
+    <p>
+    Science Topics, a component of the USGS home page from 2005 to 2015,
+    was a browsable index of web resources intended for the public.  It
+    augmented traditional search and site-specific browse interfaces in
+    concert with a "USGS by State" and "About USGS" sites, and was
+    specifically intended to work alongside those facilities.
+    </p>
+    <p>
+    This infrastructure was specifically intended to help people outside
+    USGS find information on USGS web sites without specific knowledge of
+    the organizational structure and operations of the USGS.  The interface
+    design was based on the idea that finding information cannot be
+    separated from understanding, so in the process of browsing or
+    searching a user is assisted by seeing relationships among scientific
+    concepts, and learns while searching.
+    </p>
+    <p>
+    Underpinning this interface were several controlled vocabularies
+    structured as formal thesauri and authority lists, a catalog of web
+    resources appropriate for the intended audience, and software used to
+    create, review, and modify both the controlled vocabularies and the
+    catalog records.  The system served as an example of the reapplication
+    of classic library methodologies in the web setting.
+    </p>
+    <p>
+    Each information resource in the Science Topics catalog was categorized
+    using several index terms.  Consequently a document would be listed
+    under <u>each</u> category for which it would be considered a relevant
+    resource.  Approximately 2000 web resources were listed in the catalog.
+    </p>
+  </div>  <!-- panel-body -->
+</div>  <!-- panel -->
+
+<div class="panel panel-default">
+  <div class="panel-heading"><h4 class="panel-title">Download</h4></div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">File or package</th>
+          <th scope="col">Format</th>
+          <th scope="col">Size</th>
+          <th scope="col">Contents</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="download/update-usgs-thesaurus.sql">update-usgs-thesaurus.sql</a></td>
+          <td>SQL</td>
+          <td>417 kB</td>
+          <td>SQL code to update your copy of the USGS Thesaurus</td>
+        </tr>
+        <tr>
+          <td><a href="download/thesauri.zip">thesauri.zip</a></td>
+          <td>SQLite</td>
+          <td>8 MB</td>
+          <td>USGS Thesaurus and other public thesauri</td>
+        </tr>
+        <tr>
+          <td><a href="download/USGSThesaurus.rdf">USGSThesaurus.rdf</a></td>
+          <td>RDF-XML</td>
+          <td>963 kB</td>
+          <td>SKOS for USGS Thesaurus only (lacks Use-With terms)</td>
+        </tr>
+        <tr>
+          <td><a href="download/CommonGeographicAreas.rdf">CommonGeographicAreas.rdf</a></td>
+          <td>RDF-XML</td>
+          <td>73 MB</td>
+          <td>SKOS or Common Geographic Areas thesaurus</td>
+        </tr>
+        <tr>
+          <td><a href="download/CMECS.rdf">CMECS.rdf</a></td>
+          <td>RDF-XML</td>
+          <td>575 kB</td>
+          <td>SKOS for Coastal and Marine Ecological Classification System</td>
+        </tr>
+        <tr>
+          <td><a href="download/MarinePlanningData.rdf">MarinePlanningData.rdf</a></td>
+          <td>RDF-XML</td>
+          <td>99 kB</td>
+          <td>SKOS for Data Categories for Marine Planning</td>
+        </tr>
+      </tbody>
+    </table>
+</div>  <!-- panel -->
+
+<p>
+Questions and comments about the thesaurus or the USGS implementation of it
+can be sent to <a href="/cdn-cgi/l/email-protection#5f2b373a2c3e2a2d2a2c1f2a2c382c71383029"><span class="__cf_email__" data-cfemail="582c303d2b392d2a2d2b182d2b3f2b763f372e">[email&#160;protected]</span></a>.
+</p>
+
+
+</div>	<!-- container -->
+
+<!-- USGS footer --><footer class="footer"><div class="tmp-container"><div class="footer-doi"><ul class="menu nav"><li class="first leaf menu-links menu-level-1"><a href="https://www.doi.gov/privacy">DOI Privacy Policy</a></li><li class="leaf menu-links menu-level-1"><a href="https://www.usgs.gov/laws/policies_notices.html">Legal</a></li><li class="leaf menu-links menu-level-1"><a href="https://www2.usgs.gov/laws/accessibility.html">Accessibility</a></li><li class="leaf menu-links menu-level-1"><a href="https://www.usgs.gov/sitemap.html">Site Map</a></li><li class="last leaf menu-links menu-level-1"><a href="https://answers.usgs.gov/">Contact USGS</a></li></ul></div><hr/><div class="footer-doi"><ul class="menu nav"><li class="first leaf menu-links menu-level-1"><a href="https://www.doi.gov/">U.S. Department of the Interior</a></li><li class="leaf menu-links menu-level-1"><a href="https://www.doioig.gov/">DOI Inspector General</a></li><li class="leaf menu-links menu-level-1"><a href="https://www.whitehouse.gov/">White House</a></li><li class="leaf menu-links menu-level-1"><a href="https://www.whitehouse.gov/omb/management/egov/">E-gov</a></li><li class="leaf menu-links menu-level-1"><a href="https://www.doi.gov/pmb/eeo/no-fear-act">No Fear Act</a></li><li class="last leaf menu-links menu-level-1"><a href="https://www2.usgs.gov/foia">FOIA</a></li></ul></div><div class="footer-social-links"><ul class="social"><li class="follow">Follow</li><li class="twitter"><a href="https://twitter.com/usgs" target="_blank"><i class="fa fa-twitter-square"><span class="only">Twitter</span></i></a></li><li class="facebook"><a href="https://facebook.com/usgeologicalsurvey" target="_blank"><i class="fa fa-facebook-square"><span class="only">Facebook</span></i></a></li><li class="googleplus"><a href="https://plus.google.com/112624925658443863798/posts" target="_blank"><i class="fa fa-google-plus-square"><span class="only">Google+</span></i></a></li><li class="github"><a href="https://github.com/usgs" target="_blank"><i class="fa fa-github"><span class="only">GitHub</span></i></a></li><li class="flickr"><a href="https://flickr.com/usgeologicalsurvey" target="_blank"><i class="fa fa-flickr"><span class="only">Flickr</span></i></a></li><li class="youtube"><a href="http://youtube.com/usgs" target="_blank"><i class="fa fa-youtube-play"><span class="only">YouTube</span></i></a></li><li class="instagram"><a href="https://instagram.com/usgs" target="_blank"><i class="fa fa-instagram"><span class="only">Instagram</span></i></a></li></ul></div></div></footer><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TKQR8KP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5772e226ecf44ce',t:'MTc5NDE2ODE5Nw=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5772e226ecf44ce',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

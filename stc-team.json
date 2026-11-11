@@ -1,0 +1,138 @@
+{
+  "source": "https://stc-official.netlify.app/our-team",
+  "arabicSource": "https://stc-official.netlify.app/our-team-ar",
+  "verifiedOn": "2026-11-11",
+  "organization": "STC — System Technologies Company",
+  "members": [
+    {
+      "name": {
+        "en": "Nazim Mili",
+        "ar": "نزيم ميلي"
+      },
+      "role": {
+        "en": "Honorable Member",
+        "ar": "عضو فخري"
+      },
+      "description": "Master 2 geology student at Kasdi Merbah University - Ouargla, interested in the oil and gas sector and drilling operations.",
+      "category": "honorable",
+      "publicProfile": "https://www.linkedin.com/in/nazim-mili-7675803aa"
+    },
+    {
+      "name": {
+        "en": "Ayoub Debihi",
+        "ar": "ذبيحي ايوب"
+      },
+      "role": {
+        "en": "Honorable Member",
+        "ar": "عضو فخري"
+      },
+      "description": "A Master 2 Petroleum Geology student at Kasdi Merbah University - Ouargla, interested in the oil and gas sector and drilling operations. A kind and friendly person.",
+      "category": "honorable",
+      "publicProfile": "https://www.instagram.com/sharlock_19/"
+    },
+    {
+      "name": {
+        "en": "Bensedira Moundir",
+        "ar": "بن سديرة منذر"
+      },
+      "role": {
+        "en": "Honorable Member",
+        "ar": "عضو فخري"
+      },
+      "description": "A Master 2 geology student at Kasdi Merbah University - Ouargla, interested in the oil and gas sector and drilling operations.",
+      "category": "honorable",
+      "publicProfile": "https://www.instagram.com/mounder_xtry/"
+    },
+    {
+      "name": {
+        "en": "Abdennour Benachoura",
+        "ar": "عبد النور بن عاشورة"
+      },
+      "role": {
+        "en": "Honorable Member",
+        "ar": "عضو فخري"
+      },
+      "description": "Master 2 student in Petroleum Geology, Applied Geology graduate, and aspiring geoscientist.",
+      "category": "honorable",
+      "publicProfile": "https://www.linkedin.com/in/abdennour-benachoura-49851b338/"
+    },
+    {
+      "name": {
+        "en": "Mohcen Med Belkacem",
+        "ar": "محسن محمد بلقاسم"
+      },
+      "role": {
+        "en": "Honorable Member",
+        "ar": "عضو فخري"
+      },
+      "description": "Master 2 geology student at Kasdi Merbah University - Ouargla, interested in the oil and gas sector and drilling operations.",
+      "category": "honorable",
+      "publicProfile": "https://t.me/MEDFAS25"
+    },
+    {
+      "name": {
+        "en": "Abd Essatar Belkharchouche",
+        "ar": "عبد الستار بلخرشوش"
+      },
+      "role": {
+        "en": "President & Founder",
+        "ar": "المؤسس والرئيس"
+      },
+      "description": "Sets STC’s direction and leads the development of digital solutions across software, design, and practical AI.",
+      "category": "core",
+      "publicProfile": "https://www.linkedin.com/in/abd-essatar-belkharchouche-17a810254"
+    },
+    {
+      "name": {
+        "en": "Mounder Benmadassi",
+        "ar": "منذر بن مداسي"
+      },
+      "role": {
+        "en": "Vice President",
+        "ar": "نائب الرئيس"
+      },
+      "description": "Supports STC’s leadership and helps coordinate the team’s work and social media presence.",
+      "category": "core",
+      "publicProfile": "https://www.linkedin.com/in/mounder-benmadassi-552465379"
+    },
+    {
+      "name": {
+        "en": "Abdeldjalil Boudiaf",
+        "ar": "عبد الجليل بوضياف"
+      },
+      "role": {
+        "en": "Official Spokesperson",
+        "ar": "المتحدث الرسمي"
+      },
+      "description": "Represents STC in public communications and brings his project management experience to the team.",
+      "category": "core",
+      "publicProfile": "https://www.linkedin.com/in/abdeldjalil-boudiaf-86bb57277"
+    },
+    {
+      "name": {
+        "en": "Baha Eddine Bensammar",
+        "ar": "بهاء الدين بن سمّار"
+      },
+      "role": {
+        "en": "Marketing Lead",
+        "ar": "مسؤول التسويق"
+      },
+      "description": "Leads STC’s marketing and communication, helping people discover the projects we build.",
+      "category": "core",
+      "publicProfile": "https://www.linkedin.com/in/baha-eddin-bensammar-241a93401"
+    },
+    {
+      "name": {
+        "en": "Krid Mohamed Haitham Nour El Yakine",
+        "ar": "كريد محمد هيثم نور اليقين"
+      },
+      "role": {
+        "en": "Business Development & Partnerships",
+        "ar": "تطوير الأعمال والشراكات"
+      },
+      "description": "A sedimentologist, geologist, and researcher currently studying at Kasdi Merbah University - Ouargla. He brings experience in building connections, finding new project opportunities, and supporting STC’s growth.",
+      "category": "core",
+      "publicProfile": "https://www.linkedin.com/in/haitham-krid-b47b16347/"
+    }
+  ]
+}

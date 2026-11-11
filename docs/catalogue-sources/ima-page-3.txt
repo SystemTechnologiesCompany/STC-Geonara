@@ -1,0 +1,53 @@
+Name                                                     CNMMN/CNMNC approved formula                               IMA      IMA No. /      Country               First reference                                          Second reference
+                                                                                                                   Status        Year
+Abellaite                                        NaPb    (CO    ) (OH)                                                A       2014-111   Spain                    European Journal of Mineralogy            29
+                                                        2     3 2                                                                                                 (2017), 915
+                                                                                                                                            Republic of the       CNMNC Newsletter 87 -           Mineralogical
+Abelloemringerite                                Cu   Pb  Mn3+Mn4+     O    (OH)(H    O)  ·H  O                       A       2025-036                            Magazine      89 (2025), 706; European
+                                                     2   2            3   11         2   2   2                                              Congo
+                                                                                                                                                                  Journal of Mineralogy        37 (2025), 695
+Abelsonite                                       NiC31H32N4                                                           A       1975-013   USA                      American Mineralogist         63 (1978), 930          American Mineralogist        102 (2017), 1129
+
+Abenakiite-(Ce)                                  Na26Ce6(Si6O18)(PO4)6(CO3)6(SO2)O                                    A       1991-054   Canada                   Canadian Mineralogist         32 (1994), 843
+
+Abernathyite                                     K(UO2)(AsO4)·3H2O                                                    G           1956      USA                   American Mineralogist         41 (1956), 82           American Mineralogist        49 (1964), 1578
+Abhurite                                         Sn2+    O  (OH)    Cl                                                A       1983-061   Saudi Arabia             Canadian Mineralogist         23 (1985), 233          Canadian Mineralogist        41 (2003), 659
+                                                       21  6      14   16
+                                                                                                                                                                  Zapiski Rossiyskogo
+Abramovite                                       Pb2SnInBiS7                                                          A       2006-016   Russia                   Mineralogicheskogo Obshchestva
+                                                                                                                                                                  136(5) (2007), 45
+Abswurmbachite                                   Cu2+Mn3+     O  (SiO   )                                             A       1990-007   Greece                   Neues Jahrbuch für Mineralogie
+                                                             6  8      4                                                                                          Abhandlungen        163 (1991), 117
+Abuite                                           CaAl   (PO   ) F                                                     A       2014-084   Japan                    Journal of Mineralogical and
+                                                       2     4 2  2                                                                                               Petrological Sciences        112 (2017), 109
+Acanthite                                        Ag   S                                                               G           1855      Czech Republic        Annalen der Physik und Chemie             95          Superlattices and Microstructures          83
+                                                     2                                                                                                            (1855), 462                                           (2015), 35
+                                                                                                                                                                  Zapiski Vsesoyuznogo                                  Journal of Physical Chemistry         96
+Acetamide                                        CH3CONH2                                                             A       1974-039   Ukraine                  Mineralogicheskogo Obshchestva              104       (1992), 668
+                                                                                                                                                                  (1975), 326
+Achalaite                                        Fe2+TiNb     O                                                       A       2013-103   Argentina                Canadian Mineralogist         54 (2016), 1043
+                                                             2  8
+                                                                                                                                                                  Boletin de la Facultad de Ciencias
+Achávalite                                               FeSe                                                                              Rn          1939      ArgentinaExactas, Fisicas y Naturales,                 Neues Jahrbuch für Mineralogie
+                                                                                                                                                                  Universidad Nacional de Cordoba             2         Monatshefte      (1972), 276
+                                                                                                                                                                  (1939), 73
+Achyrophanite                                    (K,Na)   (Fe3+,Ti,Al,Mg)     O  (AsO    )                            A       2018-011   Russia                   Minerals     15 (2025), 706
+                                                         3                   5  2       4 5
+Acmonidesite                                     (NH4,K,Pb,Na)9Fe2+4(SO4)5Cl8                                         A       2013-068   Italy                    Mineralogical Magazine         83 (2019), 137
+Actinolite                                       ☐Ca    (Mg        Fe2+       )Si  O   (OH)                          Rd      2012 s.p.      Germany /             Elements of Mineralogy, 2nd ed., vol. 1.              American Mineralogist        83 (1998), 458
+                                                       2     4.5-2.5    0.5-2.5   8  22      2                                              Austria               Elmsly, London (1794), 167
+Acuminite                                        SrAlF   (OH)(H     O)                                                A       1986-038      Denmark               Neues Jahrbuch für Mineralogie                        Zeitschrift für Kristallographie      194
+                                                        4         2                                                                         (Greenland)           Monatshefte      (1987), 502                          (1991), 221
+Adachiite                                        CaFe2+    Al  (Si AlO    )(BO   ) (OH)   (OH)                        A       2012-101   Japan                    Journal of Mineralogical and
+                                                          3   6   5     18      3 3      3                                                                        Petrological Sciences        109 (2014), 74
+                                                                                                                                                                  Comptes Rendus Hebdomadaires des                      Zeitschrift für Kristallographie      238
+Adamite                                          Zn2(AsO4)(OH)                                                        G           1866      Chile                 Séances de l'Académie des Sciences                    (2023), 355
+                                                                                                                                                                  62 (1866), 692
+Adamsite-(Y)                                     NaY(CO3)2(H2O)3·3H2O                                                 A       1999-020   Canada                   Canadian Mineralogist         38 (2000), 1457
+Adanite                                          Pb   (Te4+O   )(SO   )                                               A       2019-088   USA                      Canadian Mineralogist         58 (2020), 403
+                                                     2        3      4
+Addibischoffite                                  Ca   Al Al  O                                                        A       2015-006      Algeria               American Mineralogist         102 (2017), 1556
+                                                     2  6   6  20                                                                           (meteorite)
+
+Adelite                                          CaMg(AsO       )(OH)                                                 G           1891      Sweden                Geologiska Föreningens i Stockholm                    Experimental Mineralogy, Petrology and
+                                                               4                                                                                                  Förhandlingar      13 (1891), 781                     Geochemistry Meeting (2002), 30 (abstr.)
